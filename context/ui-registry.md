@@ -625,3 +625,107 @@ Notes:
 - Keep variants inside the same component.
 - Register every new component after implementation.
 - ui-rules.md and ui-tokens.md remain the source of truth.
+
+## Container
+
+Path:
+components/ui/Container.tsx
+
+Purpose:
+Page width wrapper.
+
+---
+
+## Section
+
+Path:
+components/ui/Section.tsx
+
+Purpose:
+Consistent vertical spacing between page sections.
+
+---
+
+## Button
+
+Path:
+components/ui/Button.tsx
+
+Purpose:
+Primary, Secondary, Ghost and WhatsApp actions.
+
+---
+
+## Input
+
+Path:
+components/ui/Input.tsx
+
+Purpose:
+Reusable text input.
+
+---
+
+## Textarea
+
+Path:
+components/ui/Textarea.tsx
+
+Purpose:
+Reusable multiline input.
+
+## Badge
+
+Path:
+components/ui/Badge.tsx
+
+Purpose:
+Product labels, stock status, sale indicators and order status badges.
+
+Variants:
+- featured
+- sale
+- new
+- success
+- warning
+- muted
+
+---
+
+## EmptyState
+
+Path:
+components/ui/EmptyState.tsx
+
+Purpose:
+Reusable empty state component for cart, products, orders, search results and admin pages.
+
+## Modal
+
+Path:
+components/ui/Modal.tsx
+
+Purpose:
+Reusable confirmation and action modal.
+
+Props:
+- isOpen
+- onClose
+- title
+- children
+
+---
+
+## Toast
+
+Path:
+components/ui/Toast.tsx
+
+Purpose:
+Reusable user feedback notification.
+
+Variants:
+- success
+- error
+- info
+- warning

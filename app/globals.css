@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Fonts */
+  --font-sans: "Poppins", sans-serif;
+
+  /* Backgrounds */
+  --color-background: #F9F8F6;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #EFEBE6;
+  --color-surface-muted: #F4F2EE;
+
+  /* Borders */
+  --color-border: #E7E2DC;
+  --color-border-light: #EFEAE5;
+
+  /* Text */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-text-muted: #8B8B8B;
+
+  /* Brand */
+  --color-accent: #D32F2F;
+  --color-accent-foreground: #FFFFFF;
+
+  /* WhatsApp */
+  --color-whatsapp: #25D366;
+  --color-whatsapp-foreground: #FFFFFF;
+
+  /* Sale */
+  --color-sale: #8C1C28;
+
+  /* Success */
+  --color-success: #2E7D32;
+  --color-success-light: #EAF6EC;
+
+  /* Warning */
+  --color-warning: #F4A300;
+  --color-warning-light: #FFF7E3;
+
+  /* Error */
+  --color-error: #B23A48;
+  --color-error-light: #FCECEF;
+
+  /* Info */
+  --color-info: #4A6FA5;
+  --color-info-light: #EEF3FA;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-text-primary);
 }

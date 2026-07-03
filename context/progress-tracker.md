@@ -34,7 +34,7 @@ Update this file after every completed feature. Any AI agent reading this should
 
 ### Phase 3 — Search & Browse
 
-- [ ] 11 Search UI
+- [x] 11 Search UI
 - [ ] 12 Search Functionality
 
 ### Phase 4 — Products
@@ -122,6 +122,6 @@ Update this file after every completed feature. Any AI agent reading this should
 
 Phase: Phase 3 — Search & Browse
 
-Last completed: 10 Homepage Complete
+Last completed: 11 Search UI
 
-Next: 11 Search UI
+Next: 12 Search Functionality

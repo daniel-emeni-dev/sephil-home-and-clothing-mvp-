@@ -52,26 +52,23 @@ export function Header() {
 
             {/* Right Icons */}
             <div className="flex items-center gap-2">
-              <button
-                type="button"
+              <Link
+                href="./search"
                 aria-label="Search"
                 className="
-                  flex
-                  h-11
-                  w-11
-                  items-center
-                  justify-center
-                  text-text-primary
-                  transition-opacity
-                  duration-200
-                  hover:opacity-70
-                "
+    flex
+    h-11
+    w-11
+    items-center
+    justify-center
+    rounded-xl
+    text-text-primary
+    transition-colors
+    hover:bg-surface-secondary
+  "
               >
-                <Search
-                  size={22}
-                  strokeWidth={1.8}
-                />
-              </button>
+                <Search size={22} strokeWidth={1.8} />
+              </Link>
 
               <button
                 type="button"
@@ -124,7 +121,7 @@ export function Header() {
 
             {/* Search */}
             <div className="flex flex-1 justify-center">
-              <SearchBar />
+              <SearchBar showResults />
             </div>
 
             {/* Navigation */}

@@ -1,7 +1,9 @@
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 
 import { Hero } from "@/components/home/Hero";
+import { CategorySection } from "@/components/home/CategorySection";
+import { FeaturedProducts } from "@/components/home";
 
 export default function HomePage() {
   return (
@@ -10,6 +12,8 @@ export default function HomePage() {
 
       <main className="flex-1">
         <Hero />
+        <CategorySection />
+        <FeaturedProducts />
       </main>
 
       <Footer />

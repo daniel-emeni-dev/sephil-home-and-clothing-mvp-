@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search, ShoppingBag } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
 import { SearchBar } from "./SearchBar";
@@ -20,96 +21,200 @@ export function Header() {
         <div
           className="
             flex
-            h-[72px]
+            h-16
             items-center
             justify-between
-            gap-4
+            lg:h-[72px]
           "
         >
-          {/* Logo */}
-          <Link
-            href="/"
+          {/* ---------- Mobile Header ---------- */}
+          <div
             className="
-              whitespace-nowrap
-              text-xl
-              font-semibold
-              text-text-primary
+              flex
+              w-full
+              items-center
+              justify-between
+              lg:hidden
             "
           >
-            Sephil
-          </Link>
+            {/* Logo */}
+            <Link
+              href="/"
+              className="
+                text-lg
+                font-semibold
+                tracking-tight
+                text-text-primary
+              "
+            >
+              Sephil
+            </Link>
 
-          {/* Desktop Search */}
-          <div className="hidden flex-1 justify-center md:flex">
-            <SearchBar />
+            {/* Right Icons */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Search"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-text-primary
+                  transition-opacity
+                  duration-200
+                  hover:opacity-70
+                "
+              >
+                <Search
+                  size={22}
+                  strokeWidth={1.8}
+                />
+              </button>
+
+              <button
+                type="button"
+                aria-label="Cart"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  text-text-primary
+                  transition-opacity
+                  duration-200
+                  hover:opacity-70
+                "
+              >
+                <ShoppingBag
+                  size={22}
+                  strokeWidth={1.8}
+                />
+              </button>
+
+              <MobileMenu />
+            </div>
           </div>
 
-          {/* Desktop Nav */}
-          <nav
+          {/* ---------- Desktop Header ---------- */}
+          <div
             className="
               hidden
+              w-full
               items-center
+              justify-between
               gap-6
               lg:flex
             "
           >
+            {/* Logo */}
             <Link
               href="/"
-              className="text-sm text-text-secondary hover:text-text-primary"
+              className="
+                whitespace-nowrap
+                text-xl
+                font-semibold
+                text-text-primary
+              "
             >
-              Home
+              Sephil
             </Link>
 
-            <Link
-              href="/shop"
-              className="text-sm text-text-secondary hover:text-text-primary"
+            {/* Search */}
+            <div className="flex flex-1 justify-center">
+              <SearchBar />
+            </div>
+
+            {/* Navigation */}
+            <nav className="flex items-center gap-6">
+              <Link
+                href="/"
+                className="
+                  text-sm
+                  text-text-secondary
+                  transition-colors
+                  hover:text-text-primary
+                "
+              >
+                Home
+              </Link>
+
+              <Link
+                href="/shop"
+                className="
+                  text-sm
+                  text-text-secondary
+                  transition-colors
+                  hover:text-text-primary
+                "
+              >
+                Shop
+              </Link>
+
+              <Link
+                href="/categories"
+                className="
+                  text-sm
+                  text-text-secondary
+                  transition-colors
+                  hover:text-text-primary
+                "
+              >
+                Categories
+              </Link>
+
+              <Link
+                href="/about"
+                className="
+                  text-sm
+                  text-text-secondary
+                  transition-colors
+                  hover:text-text-primary
+                "
+              >
+                About
+              </Link>
+
+              <Link
+                href="/contact"
+                className="
+                  text-sm
+                  text-text-secondary
+                  transition-colors
+                  hover:text-text-primary
+                "
+              >
+                Contact
+              </Link>
+            </nav>
+
+            {/* Cart */}
+            <button
+              type="button"
+              aria-label="Cart"
+              className="
+                flex
+                h-11
+                w-11
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-border
+                bg-surface
+                transition-colors
+                duration-200
+                hover:bg-surface-secondary
+              "
             >
-              Shop
-            </Link>
-
-            <Link
-              href="/categories"
-              className="text-sm text-text-secondary hover:text-text-primary"
-            >
-              Categories
-            </Link>
-
-            <Link
-              href="/about"
-              className="text-sm text-text-secondary hover:text-text-primary"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/contact"
-              className="text-sm text-text-secondary hover:text-text-primary"
-            >
-              Contact
-            </Link>
-          </nav>
-
-          {/* Cart */}
-          <button
-            type="button"
-            className="
-              flex
-              h-11
-              w-11
-              items-center
-              justify-center
-              rounded-xl
-              border
-              border-border
-              bg-surface
-            "
-            aria-label="Cart"
-          >
-            🛒
-          </button>
-
-          {/* Mobile Menu */}
-          <MobileMenu />
+              <ShoppingBag
+                size={22}
+                strokeWidth={1.8}
+              />
+            </button>
+          </div>
         </div>
       </Container>
     </header>

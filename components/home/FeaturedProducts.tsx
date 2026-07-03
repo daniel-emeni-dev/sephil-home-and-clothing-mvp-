@@ -54,9 +54,7 @@ export function FeaturedProducts() {
                   text-text-secondary
                 "
               >
-                Explore a curated collection of fashion,
-                beauty, accessories and home essentials
-                selected to bring timeless elegance into
+                ...to bring timeless elegance into
                 your everyday lifestyle.
               </p>
             </div>

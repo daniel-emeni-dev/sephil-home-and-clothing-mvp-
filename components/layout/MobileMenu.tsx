@@ -1,3 +1,5 @@
+import { Menu } from "lucide-react";
+
 export function MobileMenu() {
   return (
     <button
@@ -5,20 +7,21 @@ export function MobileMenu() {
       aria-label="Open menu"
       className="
         flex
-        h-11
-        w-11
+        h-10
+        w-10
         items-center
         justify-center
-        rounded-xl
-        border
-        border-border
-        bg-surface
+        text-text-primary
+        transition-colors
+        duration-200
+        hover:text-accent
         md:hidden
       "
     >
-      <span className="text-lg text-text-primary">
-        ☰
-      </span>
+      <Menu
+        size={20}
+        strokeWidth={1.8}
+      />
     </button>
   );
 }

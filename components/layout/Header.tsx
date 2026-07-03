@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Search, ShoppingBag } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
-import { SearchBar } from "./SearchBar";
+import { SearchBar } from "../search/SearchBar";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {

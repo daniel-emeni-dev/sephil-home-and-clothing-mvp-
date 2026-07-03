@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
-import type { Product } from "./mockProducts";
+import type { Product } from "../../lib/data/mockProducts";
 
 type ProductCardProps = {
   product: Product;
@@ -81,8 +81,7 @@ export function ProductCard({
             text-text-primary
           "
         >
-          ₦{product.price.toLocaleString()}
-        </p>
+formatCurrency(price)        </p>
 
         <Button className="w-full">
           Add to Cart

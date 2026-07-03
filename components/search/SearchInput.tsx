@@ -1,10 +1,14 @@
 import { Search } from "lucide-react";
 
 type SearchInputProps = {
+  value: string;
+  onChange: (value: string) => void;
   placeholder?: string;
 };
 
 export function SearchInput({
+  value,
+  onChange,
   placeholder = "Search products...",
 }: SearchInputProps) {
   return (
@@ -33,6 +37,8 @@ export function SearchInput({
 
       <input
         type="search"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         className="
           w-full

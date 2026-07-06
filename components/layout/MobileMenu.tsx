@@ -14,7 +14,7 @@ export function MobileMenu() {
         text-text-primary
         transition-colors
         duration-200
-        hover:text-accent
+        hover:text-primary
         md:hidden
       "
     >

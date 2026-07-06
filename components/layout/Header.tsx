@@ -1,16 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Search, ShoppingBag } from "lucide-react";
 
 import { useCart } from "@/context/CartContext";
 
 import { Container } from "@/components/ui/Container";
+import { CartDrawer } from "@/components/cart/CartDrawer";
 import { SearchBar } from "../search/SearchBar";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
   const { cartCount } = useCart();
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <header
@@ -84,6 +87,7 @@ export function Header() {
                 <button
                   type="button"
                   aria-label="Cart"
+                  onClick={() => setIsCartOpen(true)}
                   className="
                     flex
                     h-11
@@ -229,6 +233,7 @@ export function Header() {
               <button
                 type="button"
                 aria-label="Cart"
+                onClick={() => setIsCartOpen(true)}
                 className="
                   flex
                   h-11
@@ -278,6 +283,10 @@ export function Header() {
           </div>
         </div>
       </Container>
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      />
     </header>
   );
 }

@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import { MessageCircle } from "lucide-react";
+
+import { useCart } from "@/context/CartContext";
 
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
@@ -14,6 +19,22 @@ interface ProductInfoProps {
 export function ProductInfo({
   product,
 }: ProductInfoProps) {
+
+  const [quantity, setQuantity] = useState(1);
+
+  const { addToCart } = useCart();
+
+  const increaseQuantity = () => {
+  setQuantity((current) => current + 1);
+};
+
+const decreaseQuantity = () => {
+  setQuantity((current) =>
+    current > 1 ? current - 1 : 1
+  );
+};
+
+
   return (
     <div
       className="
@@ -57,7 +78,6 @@ export function ProductInfo({
         {product.description}
       </p>
 
-      {/* Quantity Selector (UI only) */}
       <div
         className="
           flex
@@ -87,11 +107,15 @@ export function ProductInfo({
         >
           <button
             type="button"
+            onClick={decreaseQuantity}
+            disabled={quantity === 1}
             className="
               px-4
               py-2
               transition-colors
               hover:bg-surface-secondary
+              disabled:cursor-not-allowed
+              disabled:opacity-40
             "
           >
             −
@@ -104,13 +128,15 @@ export function ProductInfo({
               px-5
               py-2
               font-medium
+              text-text-primary
             "
           >
-            1
+            {quantity}
           </span>
 
           <button
             type="button"
+            onClick={increaseQuantity}
             className="
               px-4
               py-2
@@ -131,16 +157,18 @@ export function ProductInfo({
           sm:flex-row
         "
       >
-        <Button className="flex-1">
+        <Button
+          className="flex-1"
+          onClick={() => addToCart(quantity)}
+        >
           Add to Cart
         </Button>
-
         <Button
+          variant="whatsapp"
           className="
             flex-1
             gap-2
           "
-          variant="whatsapp"
         >
           <MessageCircle
             size={18}

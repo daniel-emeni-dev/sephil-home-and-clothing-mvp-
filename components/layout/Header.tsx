@@ -1,11 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { Search, ShoppingBag } from "lucide-react";
+
+import { useCart } from "@/context/CartContext";
 
 import { Container } from "@/components/ui/Container";
 import { SearchBar } from "../search/SearchBar";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
+  const { cartCount } = useCart();
+
   return (
     <header
       className="
@@ -53,43 +59,74 @@ export function Header() {
             {/* Right Icons */}
             <div className="flex items-center gap-2">
               <Link
-                href="./search"
+                href="/search"
                 aria-label="Search"
-                className="
-    flex
-    h-11
-    w-11
-    items-center
-    justify-center
-    rounded-xl
-    text-text-primary
-    transition-colors
-    hover:bg-surface-secondary
-  "
-              >
-                <Search size={22} strokeWidth={1.8} />
-              </Link>
-
-              <button
-                type="button"
-                aria-label="Cart"
                 className="
                   flex
                   h-11
                   w-11
                   items-center
                   justify-center
+                  rounded-xl
                   text-text-primary
-                  transition-opacity
-                  duration-200
-                  hover:opacity-70
+                  transition-colors
+                  hover:bg-surface-secondary
                 "
               >
-                <ShoppingBag
+                <Search
                   size={22}
                   strokeWidth={1.8}
                 />
-              </button>
+              </Link>
+
+              {/* Cart */}
+              <div className="relative shrink-0">
+                <button
+                  type="button"
+                  aria-label="Cart"
+                  className="
+                    flex
+                    h-11
+                    w-11
+                    items-center
+                    justify-center
+                    rounded-xl
+                    text-text-primary
+                    transition-colors
+                    hover:bg-surface-secondary
+                  "
+                >
+                  <ShoppingBag
+                    size={22}
+                    strokeWidth={1.8}
+                  />
+                </button>
+
+                {cartCount > 0 && (
+                  <span
+                    className="
+                      absolute
+                      -top-2
+                      -right-2
+                      z-50
+                      flex
+                      h-6
+                      min-w-6
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-primary
+                      px-1
+                      text-[10px]
+                      font-semibold
+                      leading-none
+                      text-white
+                    "
+                  >
+                    {cartCount}
+                  </span>
+                )}
+              </div>
 
               <MobileMenu />
             </div>
@@ -187,30 +224,57 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Cart */}
-            <button
-              type="button"
-              aria-label="Cart"
-              className="
-                flex
-                h-11
-                w-11
-                items-center
-                justify-center
-                rounded-xl
-                border
-                border-border
-                bg-surface
-                transition-colors
-                duration-200
-                hover:bg-surface-secondary
-              "
-            >
-              <ShoppingBag
-                size={22}
-                strokeWidth={1.8}
-              />
-            </button>
+            {/* Desktop Cart */}
+            <div className="relative">
+              <button
+                type="button"
+                aria-label="Cart"
+                className="
+                  flex
+                  h-11
+                  w-11
+                  items-center
+                  justify-center
+                  rounded-xl
+                  border
+                  border-border
+                  bg-surface
+                  transition-colors
+                  duration-200
+                  hover:bg-surface-secondary
+                "
+              >
+                <ShoppingBag
+                  size={22}
+                  strokeWidth={1.8}
+                />
+              </button>
+
+              {cartCount > 0 && (
+                <span
+                  className="
+                    absolute
+                    -top-2
+                    -right-2
+                    z-50
+                    flex
+                    h-6
+                    min-w-6
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-primary
+                    px-1
+                    text-[10px]
+                    font-semibold
+                    leading-none
+                    text-white
+                  "
+                >
+                  {cartCount}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </Container>

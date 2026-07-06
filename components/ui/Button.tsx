@@ -18,7 +18,7 @@ export function Button({
 }: ButtonProps) {
   const variants = {
     primary:
-      "bg-accent text-white hover:opacity-90",
+      "bg-primary text-white hover:opacity-90",
 
     secondary:
       "bg-surface border border-border text-text-primary hover:bg-surface-secondary",

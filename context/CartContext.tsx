@@ -3,6 +3,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -58,6 +59,28 @@ export function CartProvider({
   const [items, setItems] = useState<CartItem[]>(
     []
   );
+  useEffect(() => {
+    const savedCart = localStorage.getItem(
+      "sephil-cart"
+    );
+
+    if (!savedCart) return;
+
+    try {
+      setItems(JSON.parse(savedCart));
+    } catch {
+      console.error(
+        "Failed to load saved cart."
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "sephil-cart",
+      JSON.stringify(items)
+    );
+  }, [items]);
 
   function addToCart(
     product: Product,
@@ -73,10 +96,10 @@ export function CartProvider({
         return current.map((item) =>
           item.product.id === product.id
             ? {
-                ...item,
-                quantity:
-                  item.quantity + quantity,
-              }
+              ...item,
+              quantity:
+                item.quantity + quantity,
+            }
             : item
         );
       }
@@ -109,10 +132,10 @@ export function CartProvider({
       current.map((item) =>
         item.product.id === productId
           ? {
-              ...item,
-              quantity:
-                item.quantity + 1,
-            }
+            ...item,
+            quantity:
+              item.quantity + 1,
+          }
           : item
       )
     );
@@ -126,10 +149,10 @@ export function CartProvider({
         .map((item) =>
           item.product.id === productId
             ? {
-                ...item,
-                quantity:
-                  item.quantity - 1,
-              }
+              ...item,
+              quantity:
+                item.quantity - 1,
+            }
             : item
         )
         .filter(
@@ -163,7 +186,7 @@ export function CartProvider({
     (total, item) =>
       total +
       item.product.price *
-        item.quantity,
+      item.quantity,
     0
   );
 

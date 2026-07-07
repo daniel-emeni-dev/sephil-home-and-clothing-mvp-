@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-text-primary">

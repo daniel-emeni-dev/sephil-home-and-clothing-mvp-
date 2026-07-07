@@ -19,6 +19,7 @@ type CartContextValue = {
   items: CartItem[];
   cartCount: number;
   subtotal: number;
+  isCartReady: boolean;
 
   addToCart: (
     product: Product,
@@ -59,13 +60,14 @@ export function CartProvider({
   const [items, setItems] = useState<CartItem[]>(
     []
   );
+
+  const [isCartReady, setIsCartReady] =
+  useState(false);
   useEffect(() => {
-    const savedCart = localStorage.getItem(
-      "sephil-cart"
-    );
+  const savedCart =
+    localStorage.getItem("sephil-cart");
 
-    if (!savedCart) return;
-
+  if (savedCart) {
     try {
       setItems(JSON.parse(savedCart));
     } catch {
@@ -73,14 +75,19 @@ export function CartProvider({
         "Failed to load saved cart."
       );
     }
-  }, []);
+  }
+
+  setIsCartReady(true);
+}, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      "sephil-cart",
-      JSON.stringify(items)
-    );
-  }, [items]);
+  if (!isCartReady) return;
+
+  localStorage.setItem(
+    "sephil-cart",
+    JSON.stringify(items)
+  );
+}, [items, isCartReady]);
 
   function addToCart(
     product: Product,
@@ -191,19 +198,25 @@ export function CartProvider({
   );
 
   const value = useMemo(
-    () => ({
-      items,
-      cartCount,
-      subtotal,
-      addToCart,
-      removeFromCart,
-      increaseQuantity,
-      decreaseQuantity,
-      clearCart,
-      getItemQuantity,
-    }),
-    [items, cartCount, subtotal]
-  );
+  () => ({
+    items,
+    cartCount,
+    subtotal,
+    isCartReady,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    getItemQuantity,
+  }),
+  [
+    items,
+    cartCount,
+    subtotal,
+    isCartReady,
+  ]
+);
 
   return (
     <CartContext.Provider value={value}>

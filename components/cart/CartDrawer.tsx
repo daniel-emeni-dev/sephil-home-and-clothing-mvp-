@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { X } from "lucide-react";
+
+import { ShoppingBag, X } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+
+import { CartEmptyState } from "./CartEmptyState";
 
 type CartDrawerProps = {
   isOpen: boolean;
@@ -105,14 +109,9 @@ export function CartDrawer({
         </div>
 
         {/* Placeholder Body */}
-        <div
-          className="
-            flex-1
-            p-6
-          "
-        >
-          Cart drawer content will go here.
-        </div>
+        <CartEmptyState
+  onContinueShopping={onClose}
+/>
       </aside>
     </>
   );

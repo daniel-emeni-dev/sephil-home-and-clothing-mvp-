@@ -47,8 +47,8 @@ Update this file after every completed feature. Any AI agent reading this should
 
 - [x] 16 Cart Drawer UI
 - [x] 17 Cart Drawer Logic
-- [ ] 18 Cart Page
-- [ ] 19 Cart Persistence
+- [x] 18 Cart Page
+- [x] 19 Cart Persistence
 
 ### Phase 6 — Checkout
 
@@ -122,6 +122,6 @@ Update this file after every completed feature. Any AI agent reading this should
 
 Phase: Phase 5 — Cart UI
 
-Last completed: 17 Cart Logic
+Last completed: 19 Cart Persistence
 
-Next: 18 Cart Page
+Next: 20 Cart UI

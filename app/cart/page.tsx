@@ -301,9 +301,11 @@ export default function CartPage() {
                             </p>
 
                             <div className="mt-6 border-t border-border pt-6">
-                                <Button className="w-full">
-                                    Proceed to Checkout
-                                </Button>
+                                <Link href="/checkout">
+                                    <Button className="w-full">
+                                        Proceed to Checkout
+                                    </Button>
+                                </Link>
 
                                 <Link
                                     href="/shop"

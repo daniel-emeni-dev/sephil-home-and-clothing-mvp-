@@ -35,17 +35,17 @@ Update this file after every completed feature. Any AI agent reading this should
 ### Phase 3 — Search & Browse
 
 - [x] 11 Search UI
-- [ ] 12 Search Functionality
+- [x] 12 Search Functionality
 
 ### Phase 4 — Products
 
-- [ ] 13 Product Grid
-- [ ] 14 Product Details Page
-- [ ] 15 Product Logic
+- [x] 13 Product Grid
+- [x] 14 Product Details Page
+- [x] 15 Product Logic
 
 ### Phase 5 — Cart
 
-- [ ] 16 Cart Drawer UI
+- [x] 16 Cart Drawer UI
 - [ ] 17 Cart Drawer Logic
 - [ ] 18 Cart Page
 - [ ] 19 Cart Persistence
@@ -120,8 +120,8 @@ Update this file after every completed feature. Any AI agent reading this should
 
 ## Current Status
 
-Phase: Phase 3 — Search & Browse
+Phase: Phase 5 — Cart UI
 
-Last completed: 14 Product Details
+Last completed: 16 Cart Drawer UI
 
-Next: 15 Product Logic
+Next: 17 Cart Logic

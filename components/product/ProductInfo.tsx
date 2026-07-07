@@ -25,14 +25,14 @@ export function ProductInfo({
   const { addToCart } = useCart();
 
   const increaseQuantity = () => {
-  setQuantity((current) => current + 1);
-};
+    setQuantity((current) => current + 1);
+  };
 
-const decreaseQuantity = () => {
-  setQuantity((current) =>
-    current > 1 ? current - 1 : 1
-  );
-};
+  const decreaseQuantity = () => {
+    setQuantity((current) =>
+      current > 1 ? current - 1 : 1
+    );
+  };
 
 
   return (
@@ -159,8 +159,7 @@ const decreaseQuantity = () => {
       >
         <Button
           className="flex-1"
-          onClick={() => addToCart(quantity)}
-        >
+          onClick={() => addToCart(product, quantity)}        >
           Add to Cart
         </Button>
         <Button

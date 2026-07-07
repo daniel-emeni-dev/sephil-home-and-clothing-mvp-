@@ -2,7 +2,7 @@
 
 Living document.
 
-Updated whenever a component is created.
+Updated whenever a component is created or significantly refined.
 
 Read this file before building any new component.
 
@@ -58,7 +58,7 @@ Legend:
 |-----------|------|--------|
 | Header | components/layout/Header.tsx | ✅ |
 | Footer | components/layout/Footer.tsx | ✅ |
-| MobileMenu | components/layout/MobileMenu.tsx | ⬜ |
+| MobileMenu | components/layout/MobileMenu.tsx | ✅ |
 | FloatingWhatsAppButton | components/layout/FloatingWhatsAppButton.tsx | ⬜ |
 
 ---
@@ -68,10 +68,11 @@ Legend:
 | Component | Path | Status |
 |-----------|------|--------|
 | Hero | components/home/Hero.tsx | ✅ |
+| CategoryCard | components/home/CategoryCard.tsx | ✅ |
 | CategorySection | components/home/CategorySection.tsx | ✅ |
-| FeaturedProducts | components/home/FeaturedProducts.tsx | ⬜ |
-| PromotionalBanner | components/home/PromotionalBanner.tsx | ⬜ |
-| Testimonials | components/home/Testimonials.tsx | ⬜ |
+| FeaturedProducts | components/home/FeaturedProducts.tsx | ✅ |
+| PromotionalBanner | components/home/PromotionalBanner.tsx | ✅ |
+| Testimonials | components/home/Testimonials.tsx | ✅ |
 
 ---
 
@@ -79,11 +80,11 @@ Legend:
 
 | Component | Path | Status |
 |-----------|------|--------|
-| ProductCard | components/product/ProductCard.tsx | ⬜ |
-| ProductGrid | components/product/ProductGrid.tsx | ⬜ |
-| ProductImageGallery | components/product/ProductImageGallery.tsx | ⬜ |
-| ProductInfo | components/product/ProductInfo.tsx | ⬜ |
-| RelatedProducts | components/product/RelatedProducts.tsx | ⬜ |
+| ProductCard | components/product/ProductCard.tsx | ✅ |
+| ProductGrid | components/product/ProductGrid.tsx | ✅ |
+| ProductImageGallery | components/product/ProductImageGallery.tsx | ✅ |
+| ProductInfo | components/product/ProductInfo.tsx | ✅ |
+| RelatedProducts | components/product/RelatedProducts.tsx | ✅ |
 
 ---
 
@@ -91,9 +92,9 @@ Legend:
 
 | Component | Path | Status |
 |-----------|------|--------|
-| SearchBar | components/search/SearchBar.tsx | ⬜ |
-| SearchInput | components/search/SearchInput.tsx | ⬜ |
-| SearchResults | components/search/SearchResults.tsx | ⬜ |
+| SearchBar | components/search/SearchBar.tsx | ✅ |
+| SearchInput | components/search/SearchInput.tsx | ✅ |
+| SearchResults | components/search/SearchResults.tsx | ✅ |
 
 ---
 
@@ -101,10 +102,11 @@ Legend:
 
 | Component | Path | Status |
 |-----------|------|--------|
-| CartDrawer | components/cart/CartDrawer.tsx | ⬜ |
+| CartDrawer | components/cart/CartDrawer.tsx | ✅ |
+| CartEmptyState | components/cart/CartEmptyState.tsx | ✅ |
+| QuantitySelector | components/cart/QuantitySelector.tsx | ✅ |
 | CartItem | components/cart/CartItem.tsx | ⬜ |
 | CartSummary | components/cart/CartSummary.tsx | ⬜ |
-| QuantitySelector | components/cart/QuantitySelector.tsx | ⬜ |
 | EmptyCart | components/cart/EmptyCart.tsx | ⬜ |
 
 ---
@@ -133,6 +135,7 @@ Legend:
 | EmptyState | components/ui/EmptyState.tsx | ✅ |
 | Modal | components/ui/Modal.tsx | ✅ |
 | Toast | components/ui/Toast.tsx | ✅ |
+| Providers | components/ui/Providers.tsx | ✅ |
 
 ---
 
@@ -149,6 +152,310 @@ Legend:
 ---
 
 # Shared Component Patterns
+
+## Header
+
+**Path**
+
+components/layout/Header.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Sticky storefront header with navigation, brand presence, and a prominent WhatsApp call-to-action.
+
+---
+
+## Footer
+
+**Path**
+
+components/layout/Footer.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Bottom-of-page information block for contact details, business info, and additional navigation.
+
+---
+
+## MobileMenu
+
+**Path**
+
+components/layout/MobileMenu.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Compact mobile navigation drawer for the boutique storefront experience.
+
+---
+
+## Hero
+
+**Path**
+
+components/home/Hero.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Primary landing section with strong brand messaging and main call-to-action.
+
+---
+
+## CategorySection
+
+**Path**
+
+components/home/CategorySection.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Shows the key product categories on the homepage in a structured, visually balanced grid.
+
+---
+
+## FeaturedProducts
+
+**Path**
+
+components/home/FeaturedProducts.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Highlights selected products for discovery and conversion on the homepage.
+
+---
+
+## PromotionalBanner
+
+**Path**
+
+components/home/PromotionalBanner.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Used for short promotional messaging or seasonal offers.
+
+---
+
+## Testimonials
+
+**Path**
+
+components/home/Testimonials.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Displays social proof and customer sentiment in a polished storefront format.
+
+---
+
+## ProductCard
+
+**Path**
+
+components/product/ProductCard.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Reusable product teaser card for shop and collection pages with image, title, price, and action area.
+
+---
+
+## ProductGrid
+
+**Path**
+
+components/product/ProductGrid.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Responsive layout for displaying collections of product cards with consistent spacing.
+
+---
+
+## ProductImageGallery
+
+**Path**
+
+components/product/ProductImageGallery.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Image-focused gallery for product detail pages.
+
+---
+
+## ProductInfo
+
+**Path**
+
+components/product/ProductInfo.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Shows product details, pricing, availability cues, and purchase actions on the product page.
+
+---
+
+## RelatedProducts
+
+**Path**
+
+components/product/RelatedProducts.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Suggests similar products to support browsing and upsell behavior.
+
+---
+
+## SearchBar
+
+**Path**
+
+components/search/SearchBar.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Primary search entry point for the storefront experience.
+
+---
+
+## SearchInput
+
+**Path**
+
+components/search/SearchInput.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Reusable text input used for search interactions and filtering flows.
+
+---
+
+## SearchResults
+
+**Path**
+
+components/search/SearchResults.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Displays search results and empty-state handling for the lookup experience.
+
+---
+
+## CartDrawer
+
+**Path**
+
+components/cart/CartDrawer.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Main cart experience for reviewing selected items and moving to checkout.
+
+---
+
+## CartEmptyState
+
+**Path**
+
+components/cart/CartEmptyState.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Empty-state experience for the cart flow.
+
+---
+
+## QuantitySelector
+
+**Path**
+
+components/cart/QuantitySelector.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Reusable quantity adjustment control for cart and product actions.
+
+---
 
 ## Button
 
@@ -279,6 +586,22 @@ components/ui/Toast.tsx
 **Status**
 
 ✅ Built
+
+---
+
+## Providers
+
+**Path**
+
+components/ui/Providers.tsx
+
+**Status**
+
+✅ Built
+
+**Purpose**
+
+Wraps the app with shared client-side providers used by the storefront.
 
 ---
 

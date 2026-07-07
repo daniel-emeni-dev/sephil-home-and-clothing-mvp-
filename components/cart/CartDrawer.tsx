@@ -27,6 +27,7 @@ export function CartDrawer({
 }: CartDrawerProps) {
   const {
     items,
+    subtotal,
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
@@ -272,13 +273,53 @@ export function CartDrawer({
         {/* Footer */}
         <div
           className="
-            border-t
-            border-border
-            p-6
-          "
+    space-y-5
+    border-t
+    border-border
+    bg-surface
+    p-6
+  "
         >
+          <div
+            className="
+      flex
+      items-center
+      justify-between
+    "
+          >
+            <span
+              className="
+        text-sm
+        font-medium
+        text-text-secondary
+      "
+            >
+              Subtotal
+            </span>
+
+            <span
+              className="
+        text-lg
+        font-semibold
+        text-text-primary
+      "
+            >
+              {formatCurrency(subtotal)}
+            </span>
+          </div>
+
+          <p
+            className="
+      text-xs
+      leading-5
+      text-text-muted
+    "
+          >
+            Shipping and bank transfer details will be calculated during checkout.
+          </p>
+
           <Button className="w-full">
-            Checkout
+            Proceed to Checkout
           </Button>
         </div>
       </aside>

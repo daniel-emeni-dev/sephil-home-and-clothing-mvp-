@@ -9,6 +9,8 @@ import {
   Plus,
 } from "lucide-react";
 
+import Link from "next/link";
+
 import { useCart } from "@/context/CartContext";
 
 import { Button } from "@/components/ui/Button";
@@ -318,9 +320,11 @@ export function CartDrawer({
             Shipping and bank transfer details will be calculated during checkout.
           </p>
 
-          <Button className="w-full">
-            Proceed to Checkout
-          </Button>
+          <Link href="/cart" onClick={onClose}>
+            <Button className="w-full">
+              Proceed to Checkout
+            </Button>
+          </Link>
         </div>
       </aside>
     </>

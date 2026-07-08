@@ -1,8 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { CustomerInformation } from "./CustomerInformation";
 import { DeliveryAddress } from "./DeliveryAddress";
+
+type CheckoutFormProps = {
+  formData: CheckoutFormData;
+  updateField: (
+    field: keyof CheckoutFormData,
+    value: string
+  ) => void;
+};
 
 export type CheckoutFormData = {
   fullName: string;
@@ -13,26 +20,10 @@ export type CheckoutFormData = {
   state: string;
 };
 
-export function CheckoutForm() {
-  const [formData, setFormData] =
-    useState<CheckoutFormData>({
-      fullName: "",
-      email: "",
-      phone: "",
-      address: "",
-      city: "",
-      state: "",
-    });
-
-  function updateField(
-    field: keyof CheckoutFormData,
-    value: string
-  ) {
-    setFormData((current) => ({
-      ...current,
-      [field]: value,
-    }));
-  }
+export function CheckoutForm({
+  formData,
+  updateField,
+}: CheckoutFormProps) {
 
   return (
     <div className="space-y-6">

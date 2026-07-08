@@ -1,10 +1,32 @@
 "use client";
 
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 
-import { CheckoutForm } from "@/components/checkout/CheckoutForm";
+import {
+  CheckoutForm,
+  type CheckoutFormData,
+} from "@/components/checkout/CheckoutForm";
+import { BankTransfer } from "@/components/checkout/BankTransfer";
+import { OrderSummary } from "@/components/checkout/OrderSummary";
 
 export default function CheckoutPage() {
+  const [formData, setFormData] = useState<CheckoutFormData>({
+    fullName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+  });
+
+  function updateField(field: keyof CheckoutFormData, value: string) {
+    setFormData((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  }
+
   return (
     <Container>
       <div className="py-10 lg:py-14">
@@ -36,10 +58,19 @@ export default function CheckoutPage() {
             lg:grid-cols-[2fr_1fr]
           "
         >
-          <CheckoutForm />
+          <CheckoutForm formData={formData} updateField={updateField} />
 
-          <aside>
-            Order summary coming next...
+          <aside
+            className="
+    space-y-6
+    lg:sticky
+    lg:top-24
+    lg:self-start
+  "
+          >
+            <OrderSummary />
+
+            <BankTransfer />
           </aside>
         </div>
       </div>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
+import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
 
 import {
   CheckoutForm,
@@ -26,6 +28,9 @@ export default function CheckoutPage() {
     Partial<Record<keyof CheckoutFormData, string>>
   >({});
 
+  const { clearCart } = useCart();
+  const router = useRouter();
+
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
 
@@ -35,15 +40,21 @@ export default function CheckoutPage() {
       return;
     }
 
-    console.log("Order Ready", formData);
+    clearCart();
+
+    router.push("/order-success");
   }
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({
       ...current,
       [field]: value,
     }));
-  }
 
+    setErrors((current) => ({
+      ...current,
+      [field]: undefined,
+    }));
+  }
   return (
     <Container>
       <div className="py-10 lg:py-14">

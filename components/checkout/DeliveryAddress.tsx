@@ -6,15 +6,15 @@ import type { CheckoutFormData } from "./CheckoutForm";
 
 type DeliveryAddressProps = {
   formData: CheckoutFormData;
-  updateField: (
-    field: keyof CheckoutFormData,
-    value: string
-  ) => void;
+  updateField: (field: keyof CheckoutFormData, value: string) => void;
+
+  errors: Partial<Record<keyof CheckoutFormData, string>>;
 };
 
 export function DeliveryAddress({
   formData,
   updateField,
+  errors,
 }: DeliveryAddressProps) {
   return (
     <section
@@ -45,6 +45,9 @@ export function DeliveryAddress({
             onChange={(e) => updateField("address", e.target.value)}
             placeholder="House number, street..."
           />
+          {errors.address && (
+            <p className="text-sm text-error">{errors.address}</p>
+          )}
         </div>
 
         <div className="space-y-2">
@@ -54,6 +57,7 @@ export function DeliveryAddress({
             onChange={(e) => updateField("city", e.target.value)}
             placeholder="Lagos"
           />
+          {errors.city && <p className="text-sm text-error">{errors.city}</p>}
         </div>
 
         <div className="space-y-2">
@@ -63,6 +67,7 @@ export function DeliveryAddress({
             onChange={(e) => updateField("state", e.target.value)}
             placeholder="Lagos State"
           />
+          {errors.state && <p className="text-sm text-error">{errors.state}</p>}
         </div>
       </div>
     </section>

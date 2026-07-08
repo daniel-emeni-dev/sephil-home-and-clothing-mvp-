@@ -9,6 +9,10 @@ type CheckoutFormProps = {
     field: keyof CheckoutFormData,
     value: string
   ) => void;
+
+  errors: Partial<
+    Record<keyof CheckoutFormData, string>
+  >;
 };
 
 export type CheckoutFormData = {
@@ -23,19 +27,22 @@ export type CheckoutFormData = {
 export function CheckoutForm({
   formData,
   updateField,
+  errors,
 }: CheckoutFormProps) {
 
   return (
     <div className="space-y-6">
       <CustomerInformation
-        formData={formData}
-        updateField={updateField}
-      />
+  formData={formData}
+  updateField={updateField}
+  errors={errors}
+/>
 
-      <DeliveryAddress
-        formData={formData}
-        updateField={updateField}
-      />
+<DeliveryAddress
+  formData={formData}
+  updateField={updateField}
+  errors={errors}
+/>
     </div>
   );
 }

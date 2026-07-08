@@ -10,6 +10,8 @@ import {
 import { BankTransfer } from "@/components/checkout/BankTransfer";
 import { OrderSummary } from "@/components/checkout/OrderSummary";
 
+import { validateCheckout } from "@/lib/utils/validateCheckout";
+
 export default function CheckoutPage() {
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",
@@ -20,6 +22,21 @@ export default function CheckoutPage() {
     state: "",
   });
 
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof CheckoutFormData, string>>
+  >({});
+
+  function handlePlaceOrder() {
+    const validationErrors = validateCheckout(formData);
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      return;
+    }
+
+    console.log("Order Ready", formData);
+  }
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({
       ...current,
@@ -58,7 +75,11 @@ export default function CheckoutPage() {
             lg:grid-cols-[2fr_1fr]
           "
         >
-          <CheckoutForm formData={formData} updateField={updateField} />
+          <CheckoutForm
+            formData={formData}
+            updateField={updateField}
+            errors={errors}
+          />
 
           <aside
             className="
@@ -70,7 +91,7 @@ export default function CheckoutPage() {
           >
             <OrderSummary />
 
-            <BankTransfer />
+            <BankTransfer onPlaceOrder={handlePlaceOrder} />
           </aside>
         </div>
       </div>

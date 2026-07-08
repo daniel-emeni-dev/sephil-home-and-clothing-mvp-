@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/Button";
 import { useCart } from "@/context/CartContext";
 
-export function BankTransfer() {
+type BankTransferProps = {
+  onPlaceOrder: () => void;
+};
+
+export function BankTransfer({ onPlaceOrder }: BankTransferProps) {
   const { items } = useCart();
   return (
     <section
@@ -36,7 +40,11 @@ export function BankTransfer() {
         confirmed.
       </p>
 
-      <Button disabled={items.length === 0} className="mt-6 w-full">
+      <Button
+        disabled={items.length === 0}
+        className="mt-6 w-full"
+        onClick={onPlaceOrder}
+      >
         Place Order
       </Button>
     </section>

@@ -5,6 +5,8 @@ import { Container } from "@/components/ui/Container";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 
+import { saveOrder, generateOrderId } from "@/lib/orders";
+
 import {
   CheckoutForm,
   type CheckoutFormData,
@@ -28,8 +30,8 @@ export default function CheckoutPage() {
     Partial<Record<keyof CheckoutFormData, string>>
   >({});
 
-  const { clearCart } = useCart();
   const router = useRouter();
+  const { items, subtotal, clearCart } = useCart();
 
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
@@ -39,6 +41,36 @@ export default function CheckoutPage() {
     if (Object.keys(validationErrors).length > 0) {
       return;
     }
+
+    if (items.length === 0) {
+  return;
+}
+
+    saveOrder({
+      id: generateOrderId(),
+
+      customer: {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+      },
+
+      delivery: {
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+      },
+
+      items,
+
+      total: subtotal,
+
+      createdAt: new Date().toISOString(),
+
+      paymentStatus: "Pending",
+
+      orderStatus: "Pending",
+    });
 
     clearCart();
 

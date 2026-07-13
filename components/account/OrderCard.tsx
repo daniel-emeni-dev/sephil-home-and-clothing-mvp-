@@ -1,5 +1,6 @@
 import type { Order } from "@/lib/orders";
 import Link from "next/link";
+import { StatusBadge } from "./StatusBadge";
 
 function getStatusClasses(
   status: Order["orderStatus"]
@@ -79,21 +80,7 @@ export function OrderCard({
           </p>
         </div>
 
-        <span
-  className={`
-    inline-flex
-    w-fit 
-    rounded-full
-    border
-    px-3
-    py-1
-    text-sm
-    font-medium
-    ${getStatusClasses(order.orderStatus)}
-  `}
->
-  {order.orderStatus}
-</span>
+        <StatusBadge status={order.orderStatus} />
       </div>
 
       {/* Customer */}

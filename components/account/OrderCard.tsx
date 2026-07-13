@@ -1,4 +1,5 @@
 import type { Order } from "@/lib/orders";
+import Link from "next/link";
 
 function getStatusClasses(
   status: Order["orderStatus"]
@@ -28,7 +29,11 @@ export function OrderCard({
 );
 
   return (
-    <section
+    <Link
+  href={`/orders/${order.id}`}
+  className="block"
+>
+  <section
       className="
         rounded-xl
         border
@@ -42,7 +47,16 @@ export function OrderCard({
       "
     >
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div
+  className="
+    flex
+    flex-col
+    gap-4
+    sm:flex-row
+    sm:items-start
+    sm:justify-between
+  "
+>
         <div>
           <p
             className="
@@ -56,6 +70,7 @@ export function OrderCard({
           <p
             className="
               mt-1
+              break-all
               font-semibold
               text-text-primary
             "
@@ -66,6 +81,8 @@ export function OrderCard({
 
         <span
   className={`
+    inline-flex
+    w-fit 
     rounded-full
     border
     px-3
@@ -108,16 +125,19 @@ export function OrderCard({
 
       {/* Footer */}
       <div
-        className="
-          mt-6
-          flex
-          items-end
-          justify-between
-          border-t
-          border-border
-          pt-4
-        "
-      >
+  className="
+    mt-6
+    flex
+    flex-col
+    gap-4
+    border-t
+    border-border
+    pt-4
+    sm:flex-row
+    sm:items-end
+    sm:justify-between
+  "
+> 
         <div>
           <p
             className="
@@ -140,7 +160,7 @@ export function OrderCard({
           </p>
         </div>
 
-        <div className="text-right">
+        <div className="text left sm:text-right">
           <p
             className="
               text-sm
@@ -169,5 +189,6 @@ export function OrderCard({
         </div>
       </div>
     </section>
+</Link>
   );
 }

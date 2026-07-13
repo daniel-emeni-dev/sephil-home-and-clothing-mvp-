@@ -6,6 +6,7 @@ import {
   getOrders,
   type Order,
 } from "@/lib/orders";
+import { OrderHeader } from "./OrderHeader";
 
 type OrderDetailsClientProps = {
   id: string;
@@ -43,9 +44,9 @@ export function OrderDetailsClient({
 
   return (
     <>
-      <h1 className="text-3xl font-semibold">
-        Order Details
-      </h1>
+      <>
+  <OrderHeader order={order} />
+</>
 
       <p className="mt-2 text-text-secondary">
         {order.id}

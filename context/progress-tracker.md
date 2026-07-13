@@ -52,10 +52,10 @@ Update this file after every completed feature. Any AI agent reading this should
 
 ### Phase 6 — Checkout
 
-- [ ] 20 Checkout UI
-- [ ] 21 Checkout Validation
-- [ ] 22 Place Order
-- [ ] 23 WhatsApp Order
+- [x] 20 Checkout UI
+- [x] 21 Checkout Validation
+- [] 22 Place Order
+- [] 23 WhatsApp Order
 
 ### Phase 7 — Admin Dashboard
 

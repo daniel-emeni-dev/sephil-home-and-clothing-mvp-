@@ -8,6 +8,7 @@ import {
   getOrders,
   type Order,
 } from "@/lib/orders";
+import { OrderCard } from "@/components/account/OrderCard";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -40,15 +41,31 @@ export default function OrdersPage() {
           </p>
         </div>
 
-        {orders.length === 0 ? (
-          <p className="text-text-secondary">
-            You haven't placed any orders yet.
-          </p>
-        ) : (
-          <p>
-  {orders.length} {orders.length === 1 ? "order" : "orders"} found.
-</p>
-        )}
+        <div className="mt-8 space-y-5">
+  {orders.length === 0 ? (
+    <div
+      className="
+        rounded-xl
+        border
+        border-border
+        bg-surface
+        p-8
+        text-center
+      "
+    >
+      <p className="text-text-secondary">
+        You haven't placed any orders yet.
+      </p>
+    </div>
+  ) : (
+    orders.map((order) => (
+      <OrderCard
+        key={order.id}
+        order={order}
+      />
+    ))
+  )}
+</div>
       </div>
     </Container>
   );

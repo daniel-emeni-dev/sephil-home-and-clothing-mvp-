@@ -46,12 +46,28 @@
   --color-info: #4A6FA5;
   --color-info-light: #EEF3FA;
 
+  /* Pending */
+--color-status-pending: #FFF7E6;
+--color-status-pending-text: #A16207;
+--color-status-pending-border: #F5D78E;
+
+/* Processing */
+--color-status-processing: #EFF6FF;
+--color-status-processing-text: #1D4ED8;
+--color-status-processing-border: #BFDBFE;
+
+/* Success */
+--color-status-success: #ECFDF3;
+--color-status-success-text: #027A48;
+--color-status-success-border: #ABEFC6;
+
   /* Radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
+
 }
 
 html {

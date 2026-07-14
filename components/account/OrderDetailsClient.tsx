@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CustomerInformationCard } from "./CustomerInformationCard";
 import { DeliveryInformationCard } from "./DeliveryInformationCard";
 import { OrderSummaryCard } from "./OrderSummaryCard";
+import { OrderItemsCard } from "./OrderItemsCard";
 
 import {
   getOrders,
@@ -54,6 +55,8 @@ export function OrderDetailsClient({
     <DeliveryInformationCard order={order} />
 
     <OrderSummaryCard order={order} />
+
+    <OrderItemsCard order={order} />
   </div>
 </>
 }

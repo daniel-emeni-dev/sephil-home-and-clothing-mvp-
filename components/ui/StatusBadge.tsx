@@ -1,14 +1,17 @@
-import type { Order } from "@/lib/orders";
+type Status =
+  | "Pending"
+  | "Processing"
+  | "Completed"
+  | "Paid";
 
 type StatusBadgeProps = {
-  status: Order["orderStatus"];
+  status: Status;
 };
 
-function getStatusClasses(
-  status: Order["orderStatus"]
-) {
+function getStatusClasses(status: Status) {
   switch (status) {
     case "Completed":
+    case "Paid":
       return `
         bg-status-success
         text-status-success-text
@@ -38,7 +41,6 @@ export function StatusBadge({
     <span
       className={`
         inline-flex
-        w-fit
         items-center
         rounded-full
         border

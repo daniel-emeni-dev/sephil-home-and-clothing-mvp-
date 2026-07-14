@@ -1,4 +1,5 @@
 import type { Order } from "@/lib/orders";
+import { StatusBadge } from "../ui/StatusBadge";
 
 type OrderSummaryCardProps = {
   order: Order;
@@ -48,9 +49,9 @@ export function OrderSummaryCard({
             Payment Status
           </span>
 
-          <span className="font-medium text-text-primary">
-            {order.paymentStatus}
-          </span>
+          <StatusBadge
+  status={order.paymentStatus}
+/>
         </div>
 
         <div className="flex items-center justify-between">
@@ -58,9 +59,9 @@ export function OrderSummaryCard({
             Order Status
           </span>
 
-          <span className="font-medium text-text-primary">
-            {order.orderStatus}
-          </span>
+          <StatusBadge
+  status={order.orderStatus}
+/>
         </div>
 
         <div

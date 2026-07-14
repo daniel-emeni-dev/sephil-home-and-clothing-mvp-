@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { CustomerInformationCard } from "./CustomerInformationCard";
+import { DeliveryInformationCard } from "./DeliveryInformationCard";
+import { OrderSummaryCard } from "./OrderSummaryCard";
 
 import {
   getOrders,
@@ -48,6 +50,10 @@ export function OrderDetailsClient({
 
   <div className="mt-6 space-y-6">
     <CustomerInformationCard order={order} />
+
+    <DeliveryInformationCard order={order} />
+
+    <OrderSummaryCard order={order} />
   </div>
 </>
 }

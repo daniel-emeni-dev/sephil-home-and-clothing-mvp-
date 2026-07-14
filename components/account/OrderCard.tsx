@@ -1,6 +1,6 @@
 import type { Order } from "@/lib/orders";
 import Link from "next/link";
-import { StatusBadge } from "./StatusBadge";
+import { StatusBadge } from "../ui/StatusBadge";
 
 function getStatusClasses(
   status: Order["orderStatus"]
@@ -147,7 +147,7 @@ export function OrderCard({
           </p>
         </div>
 
-        <div className="text left sm:text-right">
+        <div className="text-left sm:text-right">
           <p
             className="
               text-sm

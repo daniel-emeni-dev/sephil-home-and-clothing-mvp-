@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { CustomerInformationCard } from "./CustomerInformationCard";
 
 import {
   getOrders,
@@ -42,15 +43,11 @@ export function OrderDetailsClient({
     );
   }
 
-  return (
-    <>
-      <>
+  return <>
   <OrderHeader order={order} />
-</>
 
-      <p className="mt-2 text-text-secondary">
-        {order.id}
-      </p>
-    </>
-  );
+  <div className="mt-6 space-y-6">
+    <CustomerInformationCard order={order} />
+  </div>
+</>
 }

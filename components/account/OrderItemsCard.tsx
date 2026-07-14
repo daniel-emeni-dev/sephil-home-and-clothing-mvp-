@@ -50,8 +50,8 @@ export function OrderItemsCard({
             <div
               className="
                 relative
-                h-20
-                w-20
+                h-24
+                w-24
                 overflow-hidden
                 rounded-lg
                 border
@@ -81,15 +81,21 @@ export function OrderItemsCard({
               </h3>
 
               <p
-                className="
-                  mt-1
-                  text-sm
-                  text-text-secondary
-                "
-              >
-                Qty: {item.quantity}
-              </p>
-
+  className="
+    mt-2
+    inline-flex
+    w-fit
+    rounded-full
+    bg-surface-secondary
+    px-2
+    py-1
+    text-xs
+    font-medium
+    text-text-secondary
+  "
+>
+  Qty {item.quantity}
+</p>
               <p
                 className="
                   mt-1
@@ -105,8 +111,10 @@ export function OrderItemsCard({
 
             <div
               className="
-                self-end
-                text-right
+                 flex
+                 flex-col
+                 items-end
+                 justify-start
               "
             >
               <p

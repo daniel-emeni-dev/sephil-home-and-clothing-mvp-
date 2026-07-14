@@ -54,37 +54,41 @@ Update this file after every completed feature. Any AI agent reading this should
 
 - [x] 20 Checkout UI
 - [x] 21 Checkout Validation
-- [x] 22 Place Order
-- [] 23 WhatsApp Order
+- [ ] 22 Email OTP Verification
+- [ ] 23 Place Order
+- [ ] 24 Order Confirmation Page
+- [ ] 25 WhatsApp Order
 
 ### Phase 7 — Admin Dashboard
 
-- [ ] 24 Dashboard UI
-- [ ] 25 Product Management
-- [ ] 26 Orders
+- [ ] 26 Dashboard UI
+- [ ] 27 Product Management
+- [ ] 28 Orders
 
 ### Phase 8 — Backend Integration
 
-- [ ] 27 Supabase Database
-- [ ] 28 Product Fetching
-- [ ] 29 Orders Integration
-- [ ] 30 Authentication (Future)
+- [ ] 29 Supabase Database
+- [ ] 30 Product Fetching
+- [ ] 31 Orders Integration
+- [ ] 32 Supabase Edge Function — Cron Cleanup
+- [ ] 33 Authentication
 
 ### Phase 9 — Extra Pages
 
-- [ ] 31 About Page
-- [ ] 32 Contact Page
-- [ ] 33 FAQ Page
-- [ ] 34 Delivery Information Page
+- [ ] 34 Account Pages
+- [ ] 35 About Page
+- [ ] 36 Contact Page
+- [ ] 37 FAQ Page
+- [ ] 38 Delivery Information Page
 
 ### Phase 10 — Polish
 
-- [ ] 35 Loading States
-- [ ] 36 Empty States
-- [ ] 37 Toast Notifications
-- [ ] 38 Mobile Optimization
-- [ ] 39 Performance
-- [ ] 40 Final QA
+- [ ] 39 Loading States
+- [ ] 40 Empty States
+- [ ] 41 Toast Notifications
+- [ ] 42 Mobile Optimization
+- [ ] 43 Performance
+- [ ] 44 Final QA
 
 ---
 

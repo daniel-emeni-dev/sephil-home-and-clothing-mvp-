@@ -1,4 +1,4 @@
-# Build Plan
+# Sephil — Build Plan
 
 ## Core Principle
 
@@ -55,6 +55,7 @@ Build reusable UI components.
 - Toast
 - QuantitySelector
 - ProductImageGallery
+- OtpInput ← NEW
 
 Register every component in ui-registry.md.
 
@@ -136,12 +137,16 @@ Advanced filters postponed.
 
 Mock products.
 
+- Sold-out items render with a "Sold Out" badge overlay on the product card ← NEW
+- Sold-out items are not removed from the grid
+
 ## 14 Product Details
 
 - Image gallery
 - Product information
 - Quantity selector
 - Add to Cart
+- Add to Wishlist button ← NEW
 - Related products
 - WhatsApp order button
 
@@ -149,6 +154,8 @@ Mock products.
 
 - Quantity control
 - Add to cart
+- Disable add-to-cart and quantity selector for sold-out items ← NEW
+- Wishlist toggle (add/remove) ← NEW
 
 ---
 
@@ -185,11 +192,30 @@ Customer info, order summary and bank transfer section.
 
 React Hook Form + Zod.
 
-## 22 Place Order
+## 22 Email OTP Verification ← NEW
 
-Create pending order in Supabase.
+- On checkout form submission, send a 6-digit OTP to the customer's email via Resend
+- Display an inline modal overlay on the same page — no tab switching, no redirect
+- OtpInput component handles the 6-digit entry
+- Order submission is blocked until OTP is verified
+- Toast confirms successful verification
+- Resend code option with cooldown timer
 
-## 23 WhatsApp Order
+## 23 Place Order
+
+- Create pending order in Supabase only after OTP is verified
+- Order row includes `email_verified: true` flag
+
+## 24 Order Confirmation Page ← NEW
+
+- Dedicated `/order-confirmation` page
+- Displays order number, items summary, grand total, and delivery method
+- Shows bank transfer details with copy helpers
+- Pre-filled WhatsApp message trigger button
+- Optional account creation prompt: "Want to save your details for next time? Create a free account."
+- Account creation uses pre-filled checkout data — customer only sets a password
+
+## 25 WhatsApp Order
 
 Generate message and redirect to WhatsApp.
 
@@ -197,13 +223,14 @@ Generate message and redirect to WhatsApp.
 
 # Phase 7 — Admin Dashboard
 
-## 24 Dashboard
+## 26 Dashboard
 
-## 25 Product Management
+## 27 Product Management
 
-Add, edit and delete products.
+- Add, edit and delete products
+- Mark items as Sold Out / Back in Stock
 
-## 26 Orders
+## 28 Orders
 
 Statuses:
 
@@ -216,46 +243,77 @@ Statuses:
 
 # Phase 8 — Backend Integration
 
-## 27 Supabase Database
+## 29 Supabase Database
 
 Products, Orders, Order Items, Categories and Customers.
 
-## 28 Product Fetching
+- Orders table includes `email_verified` boolean field
+
+## 30 Product Fetching
 
 Retrieve products from Supabase.
 
-## 29 Orders Integration
+## 31 Orders Integration
 
 Save and update orders.
 
-## 30 Authentication
+## 32 Supabase Edge Function — Cron Cleanup ← NEW
 
-Future feature.
+- Edge Function runs on a cron schedule (every few hours)
+- Deletes orders where `email_verified = false` and `created_at` is older than 24 hours
+- Keeps the database clean without any manual intervention
+- Prevents unverified ghost orders from appearing in the admin inbox or triggering WhatsApp noise
+
+## 33 Authentication
+
+- Email and password sign up and login
+- Session persistence
+- Protected account routes
+- Post-order account creation flow using pre-filled checkout data
 
 ---
 
 # Phase 9 — Extra Pages
 
-31 About
+## 34 Account Pages ← EXPANDED
 
-32 Contact
+- `/account/login`
+- `/account/register`
+- `/account/profile`
+- `/account/orders` — order history with statuses
+- `/account/addresses` — add, edit, remove saved addresses
+- `/account/wishlist` — saved wishlist items with add-to-cart option ← NEW
+- `/account/payments` — past payment records
 
-33 FAQ
+## 35 About
 
-34 Delivery Information
+## 36 Contact
+
+## 37 FAQ
+
+## 38 Delivery Information
 
 ---
 
 # Phase 10 — Polish
 
-35 Loading States
+## 39 Loading States
 
-36 Empty States
+## 40 Empty States
 
-37 Toast Notifications
+## 41 Toast Notifications
 
-38 Mobile Optimization
+- Item added to cart
+- Item added to wishlist / removed from wishlist ← NEW
+- OTP sent
+- OTP verified
+- Order placed
+- Account created
+- Address saved
+- Errors
 
-39 Performance
+## 42 Mobile Optimization
 
-40 Final QA
+## 43 Performance
+
+## 44 Final QA

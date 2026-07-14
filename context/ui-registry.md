@@ -135,6 +135,7 @@ Legend:
 | EmptyState | components/ui/EmptyState.tsx | ✅ |
 | Modal | components/ui/Modal.tsx | ✅ |
 | Toast | components/ui/Toast.tsx | ✅ |
+| OtpInput | components/ui/OtpInput.tsx | ⬜ |
 | Providers | components/ui/Providers.tsx | ✅ |
 
 ---
@@ -598,6 +599,22 @@ components/ui/Providers.tsx
 **Status**
 
 ✅ Built
+
+---
+
+## OtpInput
+
+**Path**
+
+components/ui/OtpInput.tsx
+
+**Status**
+
+⬜ Not Built
+
+**Purpose**
+
+Specialized input component for 6-digit OTP entry during email verification on checkout. Handles auto-focus between digits, paste detection, and submission on completion.
 
 **Purpose**
 

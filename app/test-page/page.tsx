@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { OtpInput } from "@/components/ui/OtpInput";
+import { OtpTimer } from "@/components/checkout/OtpTimer";
 
 export default function TestPage() {
   const [otp, setOtp] = useState(
@@ -14,6 +15,7 @@ export default function TestPage() {
         value={otp}
         onChange={setOtp}
       />
+      <OtpTimer />
     </div>
   );
 }

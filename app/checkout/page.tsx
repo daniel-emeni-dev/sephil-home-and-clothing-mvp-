@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { useCart } from "@/context/CartContext";
 
@@ -15,6 +15,7 @@ import { validateCheckout } from "@/lib/utils/validateCheckout";
 import { OtpVerificationModal } from "@/components/checkout/OtpVerificationModal";
 
 export default function CheckoutPage() {
+
   const [isOtpOpen, setIsOtpOpen] =
     useState(false);
 
@@ -37,6 +38,19 @@ const [canResend, setCanResend] =
   const [errors, setErrors] = useState<
     Partial<Record<keyof CheckoutFormData, string>>
   >({});
+
+  useEffect(() => {
+    if (isOtpOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOtpOpen]);
+
 
   const { items } = useCart();
   function handlePlaceOrder() {
@@ -94,7 +108,13 @@ const [canResend, setCanResend] =
   setCanResend(false);
 }}
 />
-      <div className="py-10 lg:py-14">
+      <div
+  className="
+    py-8
+    pb-24
+    lg:py-14
+  "
+>
         <div className="mb-10">
           <h1
             className="
@@ -119,7 +139,7 @@ const [canResend, setCanResend] =
         <div
           className="
             grid
-            gap-8
+            gap-10
             lg:grid-cols-[2fr_1fr]
           "
         >

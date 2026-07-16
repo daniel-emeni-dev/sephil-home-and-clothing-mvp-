@@ -50,28 +50,28 @@ export function OtpVerificationModal({
   return (
     <div
       className="
-        overflow-hidden
-        fixed
-        inset-0
-        z-50
-        flex
-        items-center
-        justify-center
-        bg-black/40
-        p-4
-        sm:p-6
-      "
+  fixed
+  inset-0
+  z-50
+  flex
+  items-center
+  justify-center
+  overflow-hidden
+  bg-black/50
+  backdrop-blur-[2px]
+  p-4
+"
     >
       <div
         className="
-          w-full
-          max-w-md
-          rounded-xl
-          bg-surface
-          p-5
-          sm:p-6
-          shadow-sm
-        "
+    w-full
+    max-w-md
+    rounded-xl
+    bg-surface
+    px-6
+    py-8
+    shadow-sm
+  "
       >
         {/* Header */}
 
@@ -96,20 +96,21 @@ export function OtpVerificationModal({
             {description}
           </p>
           <p
-            className="
-              mt-1
-              font-medium
-              text-text-primary
-              break-all
-            "
-          >
+  className="
+    mt-2
+    px-3
+    font-medium
+    text-text-primary
+    break-all
+  "
+>
             {email}
           </p>
         </div>
 
         {/* OTP */}
 
-        <div className="mt-8">
+        <div className="mt-10">
           <OtpInput
             value={otp}
             onChange={onOtpChange}
@@ -118,7 +119,7 @@ export function OtpVerificationModal({
 
         {/* Timer / Resend */}
 
-        <div className="mt-6 text-center">
+        <div className="mt-10 text-center">
           {!canResend ? (
             <OtpTimer
               onComplete={onTimerComplete}
@@ -133,7 +134,7 @@ export function OtpVerificationModal({
 
         {/* Verify */}
 
-        <div className="mt-8">
+        <div className="mt-10">
           <Button
             className="w-full"
             onClick={onVerify}
@@ -148,7 +149,7 @@ export function OtpVerificationModal({
           type="button"
           onClick={onClose}
           className="
-            mt-4
+            mt-6
             w-full
             text-sm
             text-text-secondary

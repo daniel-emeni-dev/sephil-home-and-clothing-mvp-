@@ -3,9 +3,6 @@
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { useCart } from "@/context/CartContext";
-import { useRouter } from "next/navigation";
-
-import { saveOrder, generateOrderId } from "@/lib/orders";
 
 import {
   CheckoutForm,
@@ -15,9 +12,17 @@ import { BankTransfer } from "@/components/checkout/BankTransfer";
 import { OrderSummary } from "@/components/checkout/OrderSummary";
 
 import { validateCheckout } from "@/lib/utils/validateCheckout";
+import { OtpVerificationModal } from "@/components/checkout/OtpVerificationModal";
 
 export default function CheckoutPage() {
   const [isOtpOpen, setIsOtpOpen] =
+    useState(false);
+
+    const [otp, setOtp] = useState<string[]>(
+  Array(6).fill("")
+);
+
+const [canResend, setCanResend] =
   useState(false);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
@@ -33,9 +38,7 @@ export default function CheckoutPage() {
     Partial<Record<keyof CheckoutFormData, string>>
   >({});
 
-  const router = useRouter();
-  const { items, subtotal, clearCart } = useCart();
-
+  const { items } = useCart();
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
 
@@ -46,11 +49,11 @@ export default function CheckoutPage() {
     }
 
     if (items.length === 0) {
-  return;
-}
+      return;
+    }
 
     setIsOtpOpen(true);
-    
+
   }
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({
@@ -65,6 +68,32 @@ export default function CheckoutPage() {
   }
   return (
     <Container>
+      <OtpVerificationModal
+  isOpen={isOtpOpen}
+  email={formData.email}
+  otp={otp}
+  onOtpChange={setOtp}
+  canResend={canResend}
+  onTimerComplete={() =>
+    setCanResend(true)
+  }
+  onResend={() => {
+    setCanResend(false);
+    setOtp(Array(6).fill(""));
+    console.log("Resend OTP");
+  }}
+  onVerify={() => {
+    console.log(
+      "OTP:",
+      otp.join("")
+    );
+  }}
+  onClose={() => {
+  setIsOtpOpen(false);
+  setOtp(Array(6).fill(""));
+  setCanResend(false);
+}}
+/>
       <div className="py-10 lg:py-14">
         <div className="mb-10">
           <h1
@@ -115,5 +144,6 @@ export default function CheckoutPage() {
         </div>
       </div>
     </Container>
+
   );
 }

@@ -5,42 +5,46 @@ import { OtpTimer } from "@/components/ui/OtpTimer";
 import { ResendOtpButton } from "@/components/ui/ResendOtpButton";
 import { Button } from "@/components/ui/Button";
 
-import { useState } from "react";
-
 type OtpVerificationModalProps = {
   isOpen: boolean;
+
+  title?: string;
+
+  description?: string;
+
   email: string;
-  onClose: () => void;
-  onVerify: (code: string) => void;
+
+  otp: string[];
+
+  onOtpChange: (value: string[]) => void;
+
+  canResend: boolean;
+
+  onTimerComplete: () => void;
+
   onResend: () => void;
+
+  onVerify: () => void;
+
+  onClose: () => void;
 };
 
 export function OtpVerificationModal({
   isOpen,
+  title = "Verify your email",
+  description = "We've sent a 6-digit verification code to",
   email,
-  onClose,
-  onVerify,
+  otp,
+  onOtpChange,
+  canResend,
+  onTimerComplete,
   onResend,
+  onVerify,
+  onClose,
 }: OtpVerificationModalProps) {
-  const [otp, setOtp] = useState(
-    Array(6).fill("")
-  );
-
-  const [canResend, setCanResend] =
-    useState(false);
 
   if (!isOpen) {
     return null;
-  }
-
-  function handleVerify() {
-    onVerify(otp.join(""));
-  }
-
-  function handleResend() {
-    setCanResend(false);
-    setOtp(Array(6).fill(""));
-    onResend();
   }
 
   return (
@@ -60,7 +64,7 @@ export function OtpVerificationModal({
         className="
           w-full
           max-w-[420px]
-          rounded-2xl
+          rounded-xl
           bg-surface
           p-6
           shadow-sm
@@ -71,25 +75,22 @@ export function OtpVerificationModal({
         <div className="text-center">
           <h2
             className="
-              text-2xl
-              font-semibold
-              text-text-primary
-            "
+    text-2xl
+    font-semibold
+    text-text-primary
+  "
           >
-            Verify your email
+            {title}
           </h2>
-
           <p
             className="
-              mt-3
-              text-sm
-              text-text-secondary
-            "
+    mt-3
+    text-sm
+    text-text-secondary
+  "
           >
-            We've sent a 6-digit verification
-            code to
+            {description}
           </p>
-
           <p
             className="
               mt-1
@@ -107,7 +108,7 @@ export function OtpVerificationModal({
         <div className="mt-8">
           <OtpInput
             value={otp}
-            onChange={setOtp}
+            onChange={onOtpChange}
           />
         </div>
 
@@ -116,14 +117,12 @@ export function OtpVerificationModal({
         <div className="mt-6 text-center">
           {!canResend ? (
             <OtpTimer
-              onComplete={() =>
-                setCanResend(true)
-              }
+              onComplete={onTimerComplete}
             />
           ) : (
             <ResendOtpButton
               canResend={canResend}
-              onResend={handleResend}
+              onResend={onResend}
             />
           )}
         </div>
@@ -133,7 +132,7 @@ export function OtpVerificationModal({
         <div className="mt-8">
           <Button
             className="w-full"
-            onClick={handleVerify}
+            onClick={onVerify}
           >
             Verify
           </Button>

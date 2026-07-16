@@ -50,6 +50,7 @@ export function OtpVerificationModal({
   return (
     <div
       className="
+        overflow-hidden
         fixed
         inset-0
         z-50
@@ -58,15 +59,17 @@ export function OtpVerificationModal({
         justify-center
         bg-black/40
         p-4
+        sm:p-6
       "
     >
       <div
         className="
           w-full
-          max-w-[420px]
+          max-w-md
           rounded-xl
           bg-surface
-          p-6
+          p-5
+          sm:p-6
           shadow-sm
         "
       >
@@ -75,7 +78,8 @@ export function OtpVerificationModal({
         <div className="text-center">
           <h2
             className="
-    text-2xl
+    text-xl
+    sm:text-2xl
     font-semibold
     text-text-primary
   "

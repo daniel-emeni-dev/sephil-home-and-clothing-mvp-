@@ -45,55 +45,55 @@ export function OtpVerificationModal({
 }: OtpVerificationModalProps) {
 
   useEffect(() => {
-  if (!isOpen) {
-    setError("");
-    setIsVerifying(false);
-  }
-}, [isOpen]);
+    if (!isOpen) {
+      setError("");
+      setIsVerifying(false);
+    }
+  }, [isOpen]);
 
   const [error, setError] = useState("");
-const [isVerifying, setIsVerifying] = useState(false);
-const VERIFY_DELAY = 1000;
+  const [isVerifying, setIsVerifying] = useState(false);
+  const VERIFY_DELAY = 1000;
 
-function handleOtpChange(value: string[]) {
-  setError("");
-  onOtpChange(value);
-}
-
-async function handleVerify() {
-  const code = otp.join("");
-
-  if (code.length !== 6) {
-    setError(
-      "Please enter the complete verification code."
-    );
-    return;
+  function handleOtpChange(value: string[]) {
+    setError("");
+    onOtpChange(value);
   }
 
-  setIsVerifying(true);
+  async function handleVerify() {
+    const code = otp.join("");
 
-  await new Promise((resolve) =>
-  setTimeout(resolve, VERIFY_DELAY)
-);
+    if (code.length !== 6) {
+      setError(
+        "Please enter the complete verification code."
+      );
+      return;
+    }
 
-  if (code !== "123456") {
-    setError(
-      "The verification code is incorrect."
+    setIsVerifying(true);
+
+    await new Promise((resolve) =>
+      setTimeout(resolve, VERIFY_DELAY)
+    );
+
+    if (code !== "123456") {
+      setError(
+        "The verification code is incorrect."
+      );
+
+      setIsVerifying(false);
+
+      return;
+    }
+
+    await onVerify();
+
+    await new Promise((resolve) =>
+      setTimeout(resolve, 500)
     );
 
     setIsVerifying(false);
-
-    return;
   }
-
-  await onVerify();
-
-await new Promise((resolve) =>
-  setTimeout(resolve, 500)
-);
-
-setIsVerifying(false);
-}
 
   if (!isOpen) {
     return null;
@@ -148,14 +148,14 @@ setIsVerifying(false);
             {description}
           </p>
           <p
-  className="
+            className="
     mt-2
     px-3
     font-medium
     text-text-primary
     break-all
   "
->
+          >
             {email}
           </p>
         </div>
@@ -163,28 +163,28 @@ setIsVerifying(false);
         {/* OTP */}
 
         <div className="mt-10">
-          <OtpInput 
-  value={otp}
-  onChange={handleOtpChange}
-  disabled={
-  isVerifying ||
-  otp.join("").length !== 6
-}
-/>
+          <OtpInput
+            value={otp}
+            onChange={handleOtpChange}
+            disabled={
+              isVerifying ||
+              otp.join("").length !== 6
+            }
+          />
         </div>
 
         {error && (
-  <p
-    className="
+          <p
+            className="
       mt-3
       text-center
       text-sm
       text-status-pending-text
     "
-  >
-    {error}
-  </p>
-)}
+          >
+            {error}
+          </p>
+        )}
 
         {/* Timer / Resend */}
 
@@ -195,11 +195,11 @@ setIsVerifying(false);
             />
           ) : (
             <ResendOtpButton
-  canResend={
-    canResend && !isVerifying
-  }
-  onResend={onResend}
-/>
+              canResend={
+                canResend && !isVerifying
+              }
+              onResend={onResend}
+            />
           )}
         </div>
 
@@ -208,12 +208,12 @@ setIsVerifying(false);
         <div className="mt-10">
           <Button
             onClick={handleVerify}
-  disabled={isVerifying}
-  className="w-full"
+            disabled={isVerifying}
+            className="w-full"
           >
             {isVerifying
-    ? "Verifying..."
-    : "Verify"}
+              ? "Verifying..."
+              : "Verify"}
           </Button>
         </div>
 

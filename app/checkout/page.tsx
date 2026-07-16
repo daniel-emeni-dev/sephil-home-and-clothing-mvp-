@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { useCart } from "@/context/CartContext";
+import { createOrder } from "@/lib/orders/createOrder";
 
 import {
   CheckoutForm,
@@ -51,8 +53,32 @@ const [canResend, setCanResend] =
     };
   }, [isOtpOpen]);
 
+  const {
+  items,
+  subtotal,
+  clearCart,
+} = useCart();
 
-  const { items } = useCart();
+  const router = useRouter();
+
+  async function completeOrder() {
+  createOrder({
+    customer: formData,
+    items,
+    total: subtotal,
+  });
+
+  clearCart();
+
+  setIsOtpOpen(false);
+
+  setOtp(Array(6).fill(""));
+
+  setCanResend(false);
+
+  router.push("/order-confirmation");
+}
+
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
 
@@ -96,12 +122,11 @@ const [canResend, setCanResend] =
     setOtp(Array(6).fill(""));
     console.log("Resend OTP");
   }}
+
   onVerify={async () => {
-    console.log(
-      "OTP:",
-      otp.join("")
-    );
-  }}
+  await completeOrder();
+}}
+
   onClose={() => {
   setIsOtpOpen(false);
   setOtp(Array(6).fill(""));

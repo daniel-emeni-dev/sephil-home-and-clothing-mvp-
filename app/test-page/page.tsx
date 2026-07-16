@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { OtpInput } from "@/components/ui/OtpInput";
-import { OtpTimer } from "@/components/checkout/OtpTimer";
+import { OtpTimer } from "@/components/ui/OtpTimer";
 import { ResendOtpButton } from "@/components/ui/ResendOtpButton";
 
 export default function TestPage() {

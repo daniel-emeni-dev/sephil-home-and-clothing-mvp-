@@ -24,7 +24,7 @@ export default function CheckoutPage() {
 );
 
 const [canResend, setCanResend] =
-  useState(false);
+  useState(false); 
 
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",

@@ -17,6 +17,9 @@ import { OrderSummary } from "@/components/checkout/OrderSummary";
 import { validateCheckout } from "@/lib/utils/validateCheckout";
 
 export default function CheckoutPage() {
+  const [isOtpOpen, setIsOtpOpen] =
+  useState(false);
+
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: "",
     email: "",
@@ -46,35 +49,8 @@ export default function CheckoutPage() {
   return;
 }
 
-    saveOrder({
-      id: generateOrderId(),
-
-      customer: {
-        fullName: formData.fullName,
-        email: formData.email,
-        phone: formData.phone,
-      },
-
-      delivery: {
-        address: formData.address,
-        city: formData.city,
-        state: formData.state,
-      },
-
-      items,
-
-      total: subtotal,
-
-      createdAt: new Date().toISOString(),
-
-      paymentStatus: "Pending",
-
-      orderStatus: "Pending",
-    });
-
-    clearCart();
-
-    router.push("/order-success");
+    setIsOtpOpen(true);
+    
   }
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({

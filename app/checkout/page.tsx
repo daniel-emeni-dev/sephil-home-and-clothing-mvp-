@@ -96,7 +96,7 @@ const [canResend, setCanResend] =
     setOtp(Array(6).fill(""));
     console.log("Resend OTP");
   }}
-  onVerify={() => {
+  onVerify={async () => {
     console.log(
       "OTP:",
       otp.join("")

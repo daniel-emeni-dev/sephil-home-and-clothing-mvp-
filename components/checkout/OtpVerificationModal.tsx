@@ -4,6 +4,7 @@ import { OtpInput } from "@/components/ui/OtpInput";
 import { OtpTimer } from "@/components/ui/OtpTimer";
 import { ResendOtpButton } from "@/components/ui/ResendOtpButton";
 import { Button } from "@/components/ui/Button";
+import { useEffect, useState } from "react";
 
 type OtpVerificationModalProps = {
   isOpen: boolean;
@@ -24,7 +25,7 @@ type OtpVerificationModalProps = {
 
   onResend: () => void;
 
-  onVerify: () => void;
+  onVerify: () => Promise<void>;
 
   onClose: () => void;
 };
@@ -43,6 +44,57 @@ export function OtpVerificationModal({
   onClose,
 }: OtpVerificationModalProps) {
 
+  useEffect(() => {
+  if (!isOpen) {
+    setError("");
+    setIsVerifying(false);
+  }
+}, [isOpen]);
+
+  const [error, setError] = useState("");
+const [isVerifying, setIsVerifying] = useState(false);
+const VERIFY_DELAY = 1000;
+
+function handleOtpChange(value: string[]) {
+  setError("");
+  onOtpChange(value);
+}
+
+async function handleVerify() {
+  const code = otp.join("");
+
+  if (code.length !== 6) {
+    setError(
+      "Please enter the complete verification code."
+    );
+    return;
+  }
+
+  setIsVerifying(true);
+
+  await new Promise((resolve) =>
+  setTimeout(resolve, VERIFY_DELAY)
+);
+
+  if (code !== "123456") {
+    setError(
+      "The verification code is incorrect."
+    );
+
+    setIsVerifying(false);
+
+    return;
+  }
+
+  await onVerify();
+
+await new Promise((resolve) =>
+  setTimeout(resolve, 500)
+);
+
+setIsVerifying(false);
+}
+
   if (!isOpen) {
     return null;
   }
@@ -57,7 +109,7 @@ export function OtpVerificationModal({
   items-center
   justify-center
   overflow-hidden
-  bg-black/50
+  bg-black/35
   backdrop-blur-[2px]
   p-4
 "
@@ -111,11 +163,28 @@ export function OtpVerificationModal({
         {/* OTP */}
 
         <div className="mt-10">
-          <OtpInput
-            value={otp}
-            onChange={onOtpChange}
-          />
+          <OtpInput 
+  value={otp}
+  onChange={handleOtpChange}
+  disabled={
+  isVerifying ||
+  otp.join("").length !== 6
+}
+/>
         </div>
+
+        {error && (
+  <p
+    className="
+      mt-3
+      text-center
+      text-sm
+      text-status-pending-text
+    "
+  >
+    {error}
+  </p>
+)}
 
         {/* Timer / Resend */}
 
@@ -126,9 +195,11 @@ export function OtpVerificationModal({
             />
           ) : (
             <ResendOtpButton
-              canResend={canResend}
-              onResend={onResend}
-            />
+  canResend={
+    canResend && !isVerifying
+  }
+  onResend={onResend}
+/>
           )}
         </div>
 
@@ -136,10 +207,13 @@ export function OtpVerificationModal({
 
         <div className="mt-10">
           <Button
-            className="w-full"
-            onClick={onVerify}
+            onClick={handleVerify}
+  disabled={isVerifying}
+  className="w-full"
           >
-            Verify
+            {isVerifying
+    ? "Verifying..."
+    : "Verify"}
           </Button>
         </div>
 
@@ -147,6 +221,7 @@ export function OtpVerificationModal({
 
         <button
           type="button"
+          disabled={isVerifying}
           onClick={onClose}
           className="
             mt-6

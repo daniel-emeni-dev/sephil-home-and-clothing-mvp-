@@ -8,6 +8,7 @@ import {
 type OtpInputProps = {
   value: string[];
   onChange: (value: string[]) => void;
+  disabled?: boolean;
 };
 
 export function OtpInput({

@@ -185,7 +185,11 @@ router.push(
     lg:self-start
   "
           >
-            <OrderSummary />
+            <OrderSummary
+  deliveryMethod={
+    formData.deliveryMethod
+  }
+/>
 
             <BankTransfer onPlaceOrder={handlePlaceOrder} />
           </aside>

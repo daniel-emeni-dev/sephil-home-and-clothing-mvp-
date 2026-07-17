@@ -39,6 +39,7 @@ export function ConfirmationSummary({
               flex
               items-center
               gap-4
+              space-y-5
             "
           >
             <Image

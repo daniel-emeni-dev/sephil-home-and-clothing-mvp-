@@ -44,10 +44,15 @@ export type Order = {
   };
 
   delivery: {
-    address: string;
-    city: string;
-    state: string;
-  };
+  address: string;
+  city: string;
+  state: string;
+
+  method:
+    | "standard"
+    | "express"
+    | "pickup";
+};
 
   items: CartItem[];
 

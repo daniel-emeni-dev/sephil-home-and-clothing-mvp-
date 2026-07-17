@@ -64,7 +64,7 @@ export type Order = {
     | "Processing"
     | "Completed";
 };
-
+    
 export function generateOrderId() {
   return `SPH-${Date.now()}`;
 }

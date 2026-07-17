@@ -62,22 +62,23 @@ const [canResend, setCanResend] =
   const router = useRouter();
 
   async function completeOrder() {
-  createOrder({
-    customer: formData,
-    items,
-    total: subtotal,
-  });
+  const order = createOrder({
+  customer: formData,
+  items,
+  total: subtotal,
+});
 
-  clearCart();
+clearCart();
 
-  setIsOtpOpen(false);
+setIsOtpOpen(false);
 
-  setOtp(Array(6).fill(""));
+setOtp(Array(6).fill(""));
 
-  setCanResend(false);
+setCanResend(false);
 
-  router.push("/order-confirmation");
-}
+router.push(
+  `/order-confirmation?order=${order.id}`
+);
 
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);

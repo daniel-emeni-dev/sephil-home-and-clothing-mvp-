@@ -79,6 +79,7 @@ setCanResend(false);
 router.push(
   `/order-confirmation?order=${order.id}`
 );
+  }
 
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
@@ -192,4 +193,4 @@ router.push(
     </Container>
 
   );
-}
+  }

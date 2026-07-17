@@ -135,6 +135,7 @@ Legend:
 | EmptyState | components/ui/EmptyState.tsx | ✅ |
 | Modal | components/ui/Modal.tsx | ✅ |
 | Toast | components/ui/Toast.tsx | ✅ |
+| StatusBadge | components/ui/StatusBadge.tsx | ✅ |
 | OtpInput | components/ui/OtpInput.tsx | ⬜ |
 | Providers | components/ui/Providers.tsx | ✅ |
 
@@ -144,6 +145,12 @@ Legend:
 
 | Component | Path | Status |
 |-----------|------|--------|
+| DashboardHeader | components/admin/DashboardHeader.tsx | ✅ |
+| DashboardStatCard | components/admin/DashboardStatCard.tsx | ✅ |
+| DashboardStats | components/admin/DashboardStats.tsx | ✅ |
+| QuickActions | components/admin/QuickActions.tsx | ✅ |
+| RecentOrders | components/admin/RecentOrders.tsx | ✅ |
+| RecentOrderCard | components/admin/RecentOrderCard.tsx | ✅ |
 | AdminSidebar | components/admin/AdminSidebar.tsx | ⬜ |
 | ProductTable | components/admin/ProductTable.tsx | ⬜ |
 | ProductForm | components/admin/ProductForm.tsx | ⬜ |

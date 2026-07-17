@@ -28,10 +28,11 @@ export function createOrder({
     },
 
     delivery: {
-      address: customer.address,
-      city: customer.city,
-      state: customer.state,
-    },
+  address: customer.address,
+  city: customer.city,
+  state: customer.state,
+  method: customer.deliveryMethod,
+},
 
     items,
 

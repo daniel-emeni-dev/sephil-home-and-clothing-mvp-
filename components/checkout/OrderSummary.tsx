@@ -7,8 +7,31 @@ import { formatCurrency } from "@/lib/utils/formatCurrency";
 
 import { Button } from "@/components/ui/Button";
 
-export function OrderSummary() {
+type OrderSummaryProps = {
+  deliveryMethod:
+    | "standard"
+    | "express"
+    | "pickup";
+};
+
+export function OrderSummary({
+  deliveryMethod,
+}: OrderSummaryProps) {
+
   const { items, subtotal, cartCount } = useCart();
+
+  function getDeliveryLabel() {
+  switch (deliveryMethod) {
+    case "express":
+      return "Express Delivery";
+
+    case "pickup":
+      return "Store Pickup";
+
+    default:
+      return "Standard Delivery";
+  }
+}
 
   return (
     <section
@@ -60,21 +83,68 @@ export function OrderSummary() {
           pt-6
         "
       >
-        <div className="mt-6 border-t border-border pt-6 space-y-4">
-          <div className="flex justify-between">
-            <span className="text-text-secondary">Items</span>
+        <div
+  className="
+    mt-6
+    border-t
+    border-border
+    pt-6
+    space-y-4
+  "
+>
+  <div className="flex justify-between">
+    <span className="text-text-secondary">
+      Items
+    </span>
 
-            <span className="font-medium">{cartCount}</span>
-          </div>
+    <span className="font-medium">
+      {cartCount}
+    </span>
+  </div>
 
-          <div className="flex justify-between">
-            <span className="font-semibold">Subtotal</span>
+  <div className="flex justify-between">
+    <span className="text-text-secondary">
+      Delivery
+    </span>
 
-            <span className="text-lg font-semibold">
-              {formatCurrency(subtotal)}
-            </span>
-          </div>
-        </div>
+    <span
+      className="
+        text-right
+        font-medium
+      "
+    >
+      {getDeliveryLabel()}
+    </span>
+  </div>
+
+  <div className="flex justify-between">
+    <span className="text-text-secondary">
+      Shipping
+    </span>
+
+    <span
+      className="
+        text-right
+        text-sm
+        text-text-secondary
+      "
+    >
+      {deliveryMethod === "pickup"
+        ? "Free"
+        : "From ₦2,500"}
+    </span>
+  </div>
+
+  <div className="flex justify-between border-t border-border pt-4">
+    <span className="font-semibold">
+      Subtotal
+    </span>
+
+    <span className="text-lg font-semibold">
+      {formatCurrency(subtotal)}
+    </span>
+  </div>
+</div>
 
         <p
           className="
@@ -84,7 +154,7 @@ export function OrderSummary() {
             text-text-muted
           "
         >
-          Shipping costs will be confirmed after your order is reviewed.
+          Final delivery charges depend on your location and will be confirmed before dispatch.
         </p>
       </div>
     </section>

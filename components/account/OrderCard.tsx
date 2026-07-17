@@ -51,14 +51,12 @@ export function OrderCard({
       <div
   className="
     flex
-    flex-col
+    items-start
+    justify-between
     gap-4
-    sm:flex-row
-    sm:items-start
-    sm:justify-between
   "
 >
-        <div>
+        <div className="min-w-0 flex-1">
           <p
             className="
               text-sm
@@ -71,7 +69,7 @@ export function OrderCard({
           <p
             className="
               mt-1
-              break-all
+              break-words
               font-semibold
               text-text-primary
             "
@@ -80,18 +78,19 @@ export function OrderCard({
           </p>
         </div>
 
-        <StatusBadge status={order.orderStatus} />
+        <div className="shrink-0">
+  <StatusBadge status={order.orderStatus} />
+</div>
       </div>
 
       {/* Customer */}
       <div
-        className="
-          mt-8
-          grid
-          gap-2
-          text-sm
-        "
-      >
+  className="
+    mt-6
+    space-y-3
+    text-sm
+  "
+>
         <p>
           <span className="font-medium">
             Customer:
@@ -105,7 +104,7 @@ export function OrderCard({
           </span>{" "}
           {order.customer.phone}
         </p>
-        <p className="pt-2 text-sm text-text-secondary">
+        <p className="pt-1 text-sm text-text-secondary">
   {totalItems} {totalItems === 1 ? "item" : "items"}
 </p>
       </div>
@@ -113,7 +112,7 @@ export function OrderCard({
       {/* Footer */}
       <div
   className="
-    mt-6
+    mt-8
     flex
     flex-col
     gap-4
@@ -138,7 +137,7 @@ export function OrderCard({
           <p
             className="
               mt-1
-              text-xl
+              text-2xl
               font-semibold
               text-text-primary
             "
@@ -159,8 +158,8 @@ export function OrderCard({
 
           <p
             className="
-              mt-1
               text-sm
+              font-medium
               text-text-primary
             "
           >

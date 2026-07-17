@@ -9,6 +9,8 @@ import {
 import { ConfirmationSummary } from "./ConfirmationSummary";
 import { ConfirmationHero } from "../../app/order-confirmation/ConfirmationHero";
 import { ConfirmationActions } from "./ConfirmationActions";
+import { CreateAccountPrompt } from "@/components/checkout/CreateAccountPrompt";
+import { BankTransferDetails } from "./BankTransferDetails";
 
 type OrderConfirmationClientProps = {
   orderId?: string;
@@ -60,7 +62,9 @@ export function OrderConfirmationClient({
       orderId={order.id}
     />
     <ConfirmationSummary order={order} />
+    <BankTransferDetails />
     <ConfirmationActions />
+    <CreateAccountPrompt /> 
   </div>
 );
 }

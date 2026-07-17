@@ -8,6 +8,7 @@ import {
   getOrders,
   type Order,
 } from "@/lib/orders";
+import { ConfirmationSummary } from "./ConfirmationSummary";
 
 type OrderConfirmationClientProps = {
   orderId?: string;
@@ -50,11 +51,12 @@ export function OrderConfirmationClient({
     className="
       space-y-6
       lg:space-y-8
-    "
+    " 
   >
     <ConfirmationHero
       orderId={order.id}
     />
+    <ConfirmationSummary order={order} />
   </div>
 );
 }

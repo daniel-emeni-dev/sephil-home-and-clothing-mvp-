@@ -2,7 +2,30 @@
 
 import { Button } from "@/components/ui/Button";
 
-export function BankTransferDetails() {
+import type { Order } from "@/lib/orders";
+import { generateWhatsAppMessage } from "@/lib/orders/generateWhatsAppMessage";
+
+type BankTransferDetailsProps = {
+  order: Order;
+};
+
+
+
+export function BankTransferDetails({
+  order,
+}: BankTransferDetailsProps) {
+
+  function handleWhatsApp() {
+  const message =
+    generateWhatsAppMessage(order);
+
+  const url =
+    `https://wa.me/234XXXXXXXXXX?text=${encodeURIComponent(
+      message
+    )}`;
+
+  window.open(url, "_blank");
+}
   return (
     <section
       className="
@@ -92,10 +115,12 @@ export function BankTransferDetails() {
       </Button>
 
       <Button
-        className="mt-3 w-full"
-      >
-        Send Order via WhatsApp
-      </Button>
+  variant="whatsapp"
+  className="mt-3 w-full"
+  onClick={handleWhatsApp}
+>
+  Send Order via WhatsApp
+</Button>
     </section>
   );
 }

@@ -113,7 +113,7 @@ export default function CartPage() {
                                     >
                                         {/* Product Image */}
                                         <Image
-                                            src={item.product.image} 
+                                            src={item.product.image}
                                             alt={item.product.name}
                                             width={112}
                                             height={112}
@@ -239,18 +239,6 @@ export default function CartPage() {
                                             >
                                                 <Trash2 size={18} />
                                             </button>
-
-                                            <p
-                                                className="
-            font-semibold
-            text-text-primary
-          "
-                                            >
-                                                {formatCurrency(
-                                                    item.product.price *
-                                                    item.quantity
-                                                )}
-                                            </p>
                                         </div>
                                     </div>
                                 ))}

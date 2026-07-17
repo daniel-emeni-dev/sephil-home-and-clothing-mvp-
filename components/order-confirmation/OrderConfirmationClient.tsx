@@ -62,7 +62,7 @@ export function OrderConfirmationClient({
       orderId={order.id}
     />
     <ConfirmationSummary order={order} />
-    <BankTransferDetails />
+    <BankTransferDetails order={order} />
     <ConfirmationActions />
     <CreateAccountPrompt /> 
   </div>

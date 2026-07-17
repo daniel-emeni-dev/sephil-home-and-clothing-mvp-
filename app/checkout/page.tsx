@@ -32,6 +32,7 @@ const [canResend, setCanResend] =
     fullName: "",
     email: "",
     phone: "",
+    deliveryMethod: "standard",
     address: "",
     city: "",
     state: "",

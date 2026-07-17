@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 
-import { ConfirmationHero } from "../../app/order-confirmation/ConfirmationHero";
-
 import {
   getOrders,
   type Order,
 } from "@/lib/orders";
 import { ConfirmationSummary } from "./ConfirmationSummary";
+import { ConfirmationHero } from "../../app/order-confirmation/ConfirmationHero";
+import { ConfirmationActions } from "./ConfirmationActions";
 
 type OrderConfirmationClientProps = {
   orderId?: string;
@@ -49,14 +49,18 @@ export function OrderConfirmationClient({
   return (
   <div
     className="
-      space-y-6
+      space-y-8
+      lg:space-y-10
+      pb-20
       lg:space-y-8
-    " 
+      lg:pb-20
+    "
   >
     <ConfirmationHero
       orderId={order.id}
     />
     <ConfirmationSummary order={order} />
+    <ConfirmationActions />
   </div>
 );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import type { Product } from "@/lib/data/mockProducts";
@@ -6,6 +8,8 @@ import { formatCurrency } from "@/lib/utils/formatCurrency";
 
 import { ProductStatusBadge } from "./ProductStatusBadge";
 import { ProductActions } from "./ProductActions";
+import { EditProductModal } from "./EditProductModal";
+import { useState } from "react";
 
 type ProductCardProps = {
   product: Product;
@@ -14,6 +18,10 @@ type ProductCardProps = {
 export function ProductCard({
   product,
 }: ProductCardProps) {
+
+    const [isEditOpen, setIsEditOpen] =
+    useState(false);
+
   return (
     <section
       className="
@@ -88,9 +96,15 @@ export function ProductCard({
 
       <div className="mt-6">
         <ProductActions
-          soldOut={product.soldOut}
-        />
+  soldOut={product.soldOut}
+  onEdit={() => setIsEditOpen(true)}
+/>
       </div>
+      <EditProductModal
+  isOpen={isEditOpen}
+  product={product}
+  onClose={() => setIsEditOpen(false)}
+/>
     </section>
   );
 }

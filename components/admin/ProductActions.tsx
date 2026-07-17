@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/Button";
 
 type ProductActionsProps = {
   soldOut: boolean;
+  onEdit: () => void;
 };
 
 export function ProductActions({
   soldOut,
+  onEdit,
 }: ProductActionsProps) {
   return (
     <div
@@ -15,11 +17,11 @@ export function ProductActions({
       "
     >
       <Button
-        variant="secondary"
-        className="flex-1"
-      >
-        Edit
-      </Button>
+  variant="secondary"
+  onClick={onEdit}
+>
+  Edit
+</Button>
 
       <Button
         className="flex-1"

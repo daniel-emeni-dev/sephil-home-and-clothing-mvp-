@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes } from "react";
 type ButtonVariant =
   | "primary"
   | "secondary"
+  | "outline"
   | "ghost"
   | "whatsapp";
 
@@ -22,6 +23,15 @@ export function Button({
 
     secondary:
       "bg-surface border border-border text-text-primary hover:bg-surface-secondary",
+
+    outline:
+      `
+    border
+    border-border
+    bg-background
+    text-text-primary
+    hover:bg-surface-secondary
+  `,
 
     ghost:
       "bg-transparent text-text-secondary hover:bg-surface-secondary",

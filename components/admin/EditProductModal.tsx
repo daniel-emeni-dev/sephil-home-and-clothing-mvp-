@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -9,48 +10,66 @@ import { Textarea } from "@/components/ui/Textarea";
 import type { Product } from "@/lib/data/mockProducts";
 
 type EditProductModalProps = {
-  isOpen: boolean;
-  product: Product | null;
-  onClose: () => void;
+    isOpen: boolean;
+    product: Product | null;
+    onClose: () => void;
 };
 
 export function EditProductModal({
-  isOpen,
-  product,
-  onClose,
+    isOpen,
+    product,
+    onClose,
 }: EditProductModalProps) {
-  if (!isOpen || !product) {
-    return null;
-  }
 
-  return (
-    <div
-      className="
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+
+        const originalOverflow =
+            document.body.style.overflow;
+
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow =
+                originalOverflow;
+        };
+    }, [isOpen]);
+
+    if (!isOpen || !product) {
+        return null;
+    }
+
+    return (
+        <div
+            className="
         fixed
         inset-0
         z-50
         flex
-        items-center
+        items-end
+        sm:items-center
         justify-center
         overflow-y-auto
         bg-black/35
         backdrop-blur-[2px]
         p-4
       "
-    >
-      <div
-        className="
+        >
+            <div
+                className="
           w-full
           max-w-2xl
           rounded-xl
           bg-surface
           shadow-sm
         "
-      >
-        {/* Header */}
+            >
+                {/* Header */}
 
-        <div
-          className="
+                <div
+                    className="
             flex
             items-center
             justify-between
@@ -59,43 +78,43 @@ export function EditProductModal({
             px-6
             py-5
           "
-        >
-          <h2
-            className="
+                >
+                    <h2
+                        className="
               text-xl
               font-semibold
               text-text-primary
             "
-          >
-            Edit Product
-          </h2>
+                    >
+                        Edit Product
+                    </h2>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="
+                    <button
+                        type="button"
+                        onClick={onClose}
+                        className="
               text-text-secondary
               transition-colors
               hover:text-text-primary
             "
-          >
-            ✕
-          </button>
-        </div>
+                    >
+                        ✕
+                    </button>
+                </div>
 
-        {/* Body */}
+                {/* Body */}
 
-        <div
-          className="
-            max-h-[70vh]
+                <div
+                    className="
+            max-h-[85vh]
             overflow-y-auto
             px-6
             py-6
             space-y-6
           "
-        >
-          <div
-            className="
+                >
+                    <div
+                        className="
               relative
               mx-auto
               h-44
@@ -105,71 +124,73 @@ export function EditProductModal({
               border
               border-border
             "
-          >
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-            />
-          </div>
+                    >
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            sizes="176px"
+                            className="object-cover"
+                        />
+                    </div>
 
-          <Input
-            defaultValue={product.name}
-            placeholder="Product name"
-          />
+                    <Input
+                        defaultValue={product.name}
+                        placeholder="Product name"
+                    />
 
-          <Input
-            defaultValue={product.category}
-            placeholder="Category"
-          />
+                    <Input
+                        defaultValue={product.category}
+                        placeholder="Category"
+                    />
 
-          <Input
-            defaultValue={product.price.toString()}
-            placeholder="Price"
-          />
+                    <Input
+                        defaultValue={product.price.toString()}
+                        placeholder="Price"
+                    />
 
-          <Textarea
-            defaultValue={product.description}
-            rows={5}
-          />
-        </div>
+                    <Textarea
+                        defaultValue={product.description}
+                        rows={5}
+                    />
+                </div>
 
-        {/* Footer */}
+                {/* Footer */}
 
-        <div
-          className="
+                <div
+                    className="
             border-t
             border-border
             px-6
             py-5
           "
-        >
-          <div
-            className="
+                >
+                    <div
+                        className="
               flex
               flex-col-reverse
               gap-3
               sm:flex-row
               sm:justify-end
             "
-          >
-            <Button
-              variant="secondary"
-              className="w-full sm:w-auto"
-              onClick={onClose}
-            >
-              Cancel
-            </Button>
+                    >
+                        <Button
+                            variant="secondary"
+                            className="w-full sm:w-auto"
+                            onClick={onClose}
+                        >
+                            Cancel
+                        </Button>
 
-            <Button
-              className="w-full sm:w-auto"
-            >
-              Save Changes
-            </Button>
-          </div>
+                        <Button
+                            disabled
+                            className="w-full sm:w-auto"
+                        >
+                            Save Changes
+                        </Button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

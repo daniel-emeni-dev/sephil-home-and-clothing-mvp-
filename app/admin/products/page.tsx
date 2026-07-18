@@ -1,7 +1,18 @@
+"use client";
+
+import { useState } from "react";
+
+import { EditProductModal } from "@/components/admin/EditProductModal";
+import type { Product } from "@/lib/data/mockProducts";
 import { Container } from "@/components/ui/Container";
 import { ProductList } from "@/components/admin/ProductList";
+import { Button } from "@/components/ui/Button";
 
 export default function AdminProductsPage() {
+
+  const [selectedProduct, setSelectedProduct] =
+    useState<Product | null>(null);
+
   return (
     <Container>
       <div
@@ -40,10 +51,28 @@ export default function AdminProductsPage() {
           >
             Manage your products and stock availability.
           </p>
+          <div
+  className="
+    mt-6
+    flex
+    justify-end
+  "
+>
+  <Button>
+    Add Product
+  </Button>
+</div>
         </div>
 
-        <ProductList />
+        <ProductList
+          onEdit={setSelectedProduct}
+        />
       </div>
+      <EditProductModal
+        isOpen={selectedProduct !== null}
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </Container>
   );
 }

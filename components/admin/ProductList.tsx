@@ -1,8 +1,16 @@
-import { mockProducts } from "@/lib/data/mockProducts";
-
+import {
+  mockProducts,
+  type Product,
+} from "@/lib/data/mockProducts";
 import { ProductCard } from "./ProductCard";
 
-export function ProductList() {
+type ProductListProps = {
+  onEdit: (product: Product) => void;
+};
+
+export function ProductList({
+  onEdit,
+}: ProductListProps) {
   return (
     <div
       className="
@@ -11,10 +19,11 @@ export function ProductList() {
       "
     >
       {mockProducts.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-        />
+       <ProductCard
+  key={product.id}
+  product={product}
+  onEdit={onEdit}
+/>
       ))}
     </div>
   );

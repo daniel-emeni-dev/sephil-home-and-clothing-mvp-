@@ -23,7 +23,8 @@ export function Header() {
         z-40
         border-b
         border-border
-        bg-surface
+        backdrop-blur-md
+        bg-surface/95
       "
     >
       <Container>

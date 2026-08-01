@@ -1,14 +1,17 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type CategoryCardProps = {
   title: string;
   description: string;
+  image: string;
   href: string;
 };
 
 export function CategoryCard({
   title,
   description,
+  image,
   href,
 }: CategoryCardProps) {
   return (
@@ -16,62 +19,83 @@ export function CategoryCard({
       href={href}
       className="
         group
+        relative
         block
         overflow-hidden
-        rounded-2xl
-        border
-        border-border
+        rounded-3xl
         bg-surface
-        transition-all
-        duration-300
-        hover:-translate-y-1
-        hover:shadow-md
       "
     >
-      <div
-        className="
-          aspect-[4/3]
-          bg-surface-secondary
-          transition-colors
-          duration-300
-          group-hover:bg-surface-muted
-        "
-      />
-
-      <div className="p-6">
-        <h3
+      <div className="relative aspect-[4/5] overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
           className="
-            text-lg
-            font-semibold
-            text-text-primary
+            object-cover
+            transition-transform
+            duration-700
+            group-hover:scale-105
+          "
+        />
+
+        <div
+          className="
+            absolute
+            inset-0
+            bg-gradient-to-t
+            from-black/65
+            via-black/10
+            to-transparent
+          "
+        />
+
+        <div
+          className="
+            absolute
+            bottom-0
+            left-0
+            right-0
+            p-6
+            text-white
           "
         >
-          {title}
-        </h3>
+          <p className="text-sm opacity-80">
+            Collection
+          </p>
 
-        <p
-          className="
-            mt-2
-            text-sm
-            leading-6
-            text-text-secondary
-          "
-        >
-          {description}
-        </p>
+          <h3
+            className="
+              mt-2
+              text-2xl
+              font-semibold
+            "
+          >
+            {title}
+          </h3>
 
-        <span
-          className="
-            mt-5
-            inline-flex
-            items-center
-            text-sm
-            font-medium
-            text-accent
-          "
-        >
-          Shop Collection →
-        </span>
+          <p
+            className="
+              mt-2
+              text-sm
+              leading-6
+              text-white/80
+            "
+          >
+            {description}
+          </p>
+
+          <span
+            className="
+              mt-5
+              inline-flex
+              items-center
+              font-medium
+            "
+          >
+            Shop Collection →
+          </span>
+        </div>
       </div>
     </Link>
   );

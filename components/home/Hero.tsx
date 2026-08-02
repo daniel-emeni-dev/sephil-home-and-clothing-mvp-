@@ -54,7 +54,7 @@ export function Hero() {
             inset-0
             bg-gradient-to-r
             from-surface/95
-            via-surface/65
+            via-surface/95
             to-transparent
             lg:from-surface
             lg:via-surface/70

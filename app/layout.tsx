@@ -36,7 +36,7 @@ export default function RootLayout({
         <Providers>
           <Header />
 
-          <main>
+          <main className="pt-16 lg:pt-[72px]">
             {children}
           </main>
 

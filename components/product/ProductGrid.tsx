@@ -1,12 +1,12 @@
 import { ProductCard } from "./ProductCard";
-import { Product } from "@/lib/data/products";
+import type { Product } from "@/lib/data/products";
 
 type ProductGridProps = {
-  products: Product[];
+  products?: Product[];
 };
 
 export function ProductGrid({
-  products,
+  products = [],
 }: ProductGridProps) {
   return (
     <div

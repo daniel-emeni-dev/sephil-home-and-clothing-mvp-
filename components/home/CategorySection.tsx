@@ -6,37 +6,36 @@ const categories = [
     title: "Fashion",
     description:
       "Timeless clothing and accessories curated for everyday elegance.",
+    image: "/images/products/handbag.jpg",
     href: "/shop?category=fashion",
+  },
+  {
+    title: "Shoes",
+    description:
+      "Luxury footwear designed for comfort and everyday confidence.",
+    image: "/images/products/sneakers.jpg",
+    href: "/shop?category=shoes",
   },
   {
     title: "Home Essentials",
     description:
       "Beautiful pieces designed to make every space feel warm and inviting.",
-    href: "/shop?category=home",
+    image: "/images/products/vase.jpg",
+    href: "/shop?category=home-essentials",
   },
   {
     title: "Beauty",
     description:
       "Self-care products selected for quality, comfort, and confidence.",
+    image: "/images/products/perfume.jpg",
     href: "/shop?category=beauty",
   },
   {
     title: "Accessories",
     description:
       "Complete every look with carefully selected finishing touches.",
+    image: "/images/products/watch.jpg",
     href: "/shop?category=accessories",
-  },
-  {
-    title: "Lifestyle",
-    description:
-      "Modern everyday products chosen to elevate daily living.",
-    href: "/shop?category=lifestyle",
-  },
-  {
-    title: "Gifts",
-    description:
-      "Thoughtful gift ideas perfect for every celebration and occasion.",
-    href: "/shop?category=gifts",
   },
 ];
 
@@ -92,11 +91,12 @@ export function CategorySection() {
         >
           {categories.map((category) => (
             <CategoryCard
-              key={category.title}
-              title={category.title}
-              description={category.description}
-              href={category.href}
-            />
+  key={category.title}
+  title={category.title}
+  description={category.description}
+  image={category.image}
+  href={category.href}
+/>
           ))}
         </div>
       </Container>

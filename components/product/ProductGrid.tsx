@@ -1,18 +1,24 @@
 import { ProductCard } from "./ProductCard";
-import { mockProducts } from "../../lib/data/mockProducts";
+import { Product } from "@/lib/data/products";
 
-export function ProductGrid() {
+type ProductGridProps = {
+  products: Product[];
+};
+
+export function ProductGrid({
+  products,
+}: ProductGridProps) {
   return (
     <div
       className="
-        grid 
+        grid
         gap-6
         sm:grid-cols-2
         lg:grid-cols-3
         xl:grid-cols-4
       "
     >
-      {mockProducts.map((product) => (
+      {products.map((product) => (
         <ProductCard
           key={product.id}
           product={product}

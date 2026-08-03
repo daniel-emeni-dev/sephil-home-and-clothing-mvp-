@@ -1,13 +1,21 @@
-export default function ShopPage() {
-  return (
-    <main className="mx-auto max-w-7xl px-6 py-16">
-      <h1 className="text-3xl font-semibold text-text-primary">
-        Shop
-      </h1>
+import { ShopHero } from "@/components/shop/ShopHero";
+import { ProductGrid } from "@/components/product/ProductGrid";
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { getProducts } from "@/lib/data/products";
 
-      <p className="mt-3 text-text-secondary">
-        Shop page coming soon.
-      </p>
-    </main>
+export default function ShopPage() {
+  const products = getProducts();
+
+  return (
+    <Section>
+      <Container>
+        <ShopHero />
+
+        <ProductGrid
+          products={products}
+        />
+      </Container>
+    </Section>
   );
 }

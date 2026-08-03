@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/Section";
 
 export function FeaturedProducts() {
   return (
-    <Section>
+    <Section id="featured-products">
       <Container>
         <div className="space-y-12">
           <div
@@ -60,8 +60,11 @@ export function FeaturedProducts() {
             </div>
 
             <Link href="/shop">
-              <Button variant="secondary">
-                View All Products
+              <Button
+                variant="secondary"
+                size="lg"
+               >
+               View Featured
               </Button>
             </Link>
           </div>

@@ -1,195 +1,177 @@
-import Link from "next/link";
+"use client";
 
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Check,
+  ChevronRight,
+} from "lucide-react";
+
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Section } from "@/components/ui/Section";
 
 export function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <section className="bg-background pt-20 pb-16 lg:pt-28 lg:pb-24">
-      <Container>
+    <Section
+      className="
+        relative
+        overflow-hidden
+        min-h-[560px]
+        py-10
+        md:min-h-[620px]
+        md:py-14
+        lg:min-h-[680px]
+      "
+    >
+      {/* ================= BACKGROUND IMAGE ================= */}
+
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/products/mix.png"
+          alt="Sephil Home & Business Collections"
+          fill
+          priority
+          sizes="100vw"
+          onLoad={() => setImageLoaded(true)}
+          className={`
+            object-cover
+            object-[65%_center]
+            transition-all
+            duration-1000
+            ease-out
+            ${imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-[1.03]"}
+          `}
+        />
+
+        {/* Gradient fade: solid over the text on the left, clear over the image on the right */}
         <div
           className="
-            grid
-            items-center
-            gap-12
-            lg:grid-cols-2
+            absolute
+            inset-0
+            bg-gradient-to-r
+            from-surface/95
+            via-surface/95
+            to-transparent
+            lg:from-surface
+            lg:via-surface/70
+            lg:to-transparent
+          "
+        />
+      </div>
+
+      {/* ================= CONTENT ================= */}
+
+      <div
+        className="
+          relative
+          max-w-xl
+        "
+      >
+        <Badge variant="featured">
+          Boutique Collection
+        </Badge>
+
+        <h1
+          className="
+            mt-6
+            text-3xl
+            font-semibold
+            leading-[1.05]
+            tracking-tight
+            text-text-primary
+            md:text-4xl
+            lg:text-5xl
           "
         >
-          {/* Content */}
-          <div className="max-w-lg">
-            <Badge variant="featured">
-              Boutique Collection
-            </Badge>
+          Curated Living
+          <br />
+          For Modern Homes
+        </h1>
 
-            <h1
-              className="
-                mt-6
-                text-4xl
-                font-bold
-                leading-tight
-                text-text-primary
-                md:text-5xl
-                lg:text-6xl
-              "
-            >
-              Curated Living
-              <br />
-              For Modern Homes
-            </h1>
+        <p
+          className="
+            mt-4
+            max-w-lg
+            text-sm
+            leading-6
+            text-text-secondary
+            md:text-base
+            md:leading-7
+          "
+        >
+          Discover carefully selected fashion,
+          home essentials, beauty products and
+          everyday lifestyle pieces curated for
+          beautiful living.
+        </p>
 
-            <p
-              className="
-                mt-6
-                text-base
-                leading-8
-                text-text-secondary
-                md:text-lg
-              "
-            >
-              Discover carefully selected fashion,
-              home essentials, beauty products,
-              and lifestyle pieces designed to
-              elevate everyday living.
-            </p>
+                <div
+          className="
+            mt-6
+            flex
+            flex-col
+            gap-3
+            sm:flex-row
+          "
+        >
+          <Link href="/shop">
+            <Button variant="primary">
+    Shop Collection
+</Button>
 
-            <div className="mt-10">
-              <Link href="/shop">
-                <Button className="px-6 py-3 font-semibold">
-                  Shop Collection
-                </Button>
-              </Link>
-            </div>
+          </Link>
+
+          <Link href="#categories">
+            <Button variant="outline">
+    Browse Categories
+</Button>
+          </Link>
+        </div>
+
+                <div
+          className="
+            mt-6
+            grid
+            gap-3
+            text-xs
+            text-text-secondary
+            sm:grid-cols-3
+            md:text-sm
+          "
+        >
+          <div className="flex items-center gap-2">
+            <Check
+              size={16}
+              className="text-primary"
+            />
+
+            Carefully Curated
           </div>
 
-          {/* Visual Area */}
-          <div
-            className="
-              relative
-              flex
-              flex-col
-              gap-6
-            "
-          >
-            <div
-              className="
-                rounded-2xl
-                border
-                border-border
-                bg-surface
-                p-8
-                shadow-sm
-              "
-            >
-              <div
-                className="
-                  mb-6
-                  aspect-[4/3]
-                  rounded-xl
-                  bg-surface-secondary
-                "
-              />
+          <div className="flex items-center gap-2">
+            <Check
+              size={16}
+              className="text-primary"
+            />
 
-              <p
-                className="
-                  text-sm
-                  text-text-muted
-                "
-              >
-                Featured Product
-              </p>
+            Nationwide Delivery
+          </div>
 
-              <h3
-                className="
-                  mt-2
-                  text-lg
-                  font-semibold
-                  text-text-primary
-                "
-              >
-                Premium Handbag
-              </h3>
+          <div className="flex items-center gap-2">
+            <Check
+              size={16}
+              className="text-primary"
+            />
 
-              <p
-                className="
-                  mt-1
-                  text-text-secondary
-                "
-              >
-                Elegant design for everyday use.
-              </p>
-            </div>
-
-            <div
-              className="
-                grid
-                gap-4
-                sm:grid-cols-2
-              "
-            >
-              <div
-                className="
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-surface
-                  p-5
-                  shadow-sm
-                "
-              >
-                <p
-                  className="
-                    text-sm
-                    text-text-muted
-                  "
-                >
-                  Home Decor
-                </p>
-
-                <h4
-                  className="
-                    mt-2
-                    font-medium
-                    text-text-primary
-                  "
-                >
-                  Decorative Vase
-                </h4>
-              </div>
-
-              <div
-                className="
-                  rounded-2xl
-                  border
-                  border-border
-                  bg-surface
-                  p-5
-                  shadow-sm
-                "
-              >
-                <p
-                  className="
-                    text-sm
-                    text-text-muted
-                  "
-                >
-                  Fashion
-                </p>
-
-                <h4
-                  className="
-                    mt-2
-                    font-medium
-                    text-text-primary
-                  "
-                >
-                  Luxury Sneakers
-                </h4>
-              </div>
-            </div>
+            Secure Checkout
           </div>
         </div>
-      </Container>
-    </section>
+
+      </div>
+    </Section>
   );
 }

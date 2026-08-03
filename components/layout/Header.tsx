@@ -17,15 +17,18 @@ export function Header() {
 
   return (
     <header
-      className="
-        sticky
-        top-0
-        z-40
-        border-b
-        border-border
-        bg-surface
-      "
-    >
+  className="
+    fixed
+    top-0
+    left-0
+    right-0
+    z-40
+    border-b
+    border-border
+    bg-surface/95
+    backdrop-blur-md
+  "
+>
       <Container>
         <div
           className="
@@ -132,7 +135,7 @@ export function Header() {
                 )}
               </div>
 
-              <MobileMenu />
+              {!isCartOpen && <MobileMenu />}
             </div>
           </div>
 

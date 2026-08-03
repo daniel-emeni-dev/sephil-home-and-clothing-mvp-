@@ -4,8 +4,11 @@ import { ProductGrid } from "@/components/product/ProductGrid";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { getFeaturedProducts } from "@/lib/data/products";
 
 export function FeaturedProducts() {
+  const products = getFeaturedProducts();
+
   return (
     <Section id="featured-products">
       <Container>
@@ -69,7 +72,7 @@ export function FeaturedProducts() {
             </Link>
           </div>
 
-          <ProductGrid />
+          <ProductGrid products={products} />
         </div>
       </Container>
     </Section>

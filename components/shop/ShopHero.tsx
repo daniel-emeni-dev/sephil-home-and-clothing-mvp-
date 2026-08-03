@@ -1,65 +1,56 @@
-import { Search } from "lucide-react";
+type ShopHeroProps = {
+  title?: string;
+  description?: string;
+  children?: React.ReactNode;
+};
 
-export function ShopHero() {
+export function ShopHero({
+  title = "Shop",
+  description = "Explore carefully curated fashion, beauty, gadgets, home essentials and everyday products.",
+  children,
+}: ShopHeroProps) {
+
   return (
-    <div className="mb-14">
-      <h1
-        className="
-          text-4xl
-          font-semibold
-          tracking-tight
-          text-text-primary
-        "
-      >
-        Shop
-      </h1>
+    <div className="mb-10">
+  <p
+    className="
+      mb-2
+      text-sm
+      font-medium
+      uppercase
+      tracking-[0.18em]
+      text-primary
+    "
+  >
+    Boutique Collection
+  </p>
 
-      <p
-        className="
-          mt-4
-          max-w-2xl
-          text-base
-          leading-7
-          text-text-secondary
-        "
-      >
-        Discover carefully selected fashion, beauty, home essentials,
-        accessories, and more from our boutique collection.
-      </p>
+  <h1
+  className="
+    text-4xl
+    font-semibold
+    tracking-tight
+    text-text-primary
+  "
+>
+  {title}
+</h1>
 
-      {/* Search (UI only for now) */}
-      <div className="mt-8 max-w-xl">
-        <div
-          className="
-            flex
-            items-center
-            gap-3
-            rounded-2xl
-            border
-            border-border
-            bg-surface
-            px-4
-            py-3
-          "
-        >
-          <Search
-            size={20}
-            className="text-text-muted"
-          />
-
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="
-              w-full
-              bg-transparent
-              text-text-primary
-              placeholder:text-text-muted
-              outline-none
-            "
-          />
+  <p
+  className="
+    mt-4
+    max-w-2xl
+    leading-7
+    text-text-secondary
+  "
+>
+  {description}
+</p>
+      {children && (
+        <div className="mt-8">
+          {children}
         </div>
-      </div>
+      )}
     </div>
   );
 }

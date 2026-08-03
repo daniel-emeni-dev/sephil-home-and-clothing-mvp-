@@ -125,7 +125,7 @@ export function Hero() {
 
           </Link>
 
-          <Link href="#categories">
+          <Link href="/categories">
             <Button variant="outline">
     Browse Categories
 </Button>

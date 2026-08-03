@@ -91,9 +91,11 @@ router.push(
       return;
     }
 
-    if (items.length === 0) {
-      return;
-    }
+    useEffect(() => {
+  if (items.length === 0) {
+    router.replace("/cart");
+  }
+}, [items, router]);
 
     setIsOtpOpen(true);
 
@@ -123,7 +125,8 @@ router.push(
   onResend={() => {
     setCanResend(false);
     setOtp(Array(6).fill(""));
-    console.log("Resend OTP");
+    // TODO:
+    // Integrate Resend API.
   }}
 
   onVerify={async () => {

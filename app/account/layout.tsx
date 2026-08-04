@@ -8,22 +8,18 @@ export default function AccountLayout({
   return (
     <main
       className="
-        min-h-screen
         bg-background
-        px-6
-        py-10
-        sm:py-12
+        px-4
+        py-8
+        sm:px-6
+        lg:px-8
       "
     >
       <div
         className="
           mx-auto
-          flex
-          min-h-[calc(100vh-5rem)]
           w-full
-          max-w-md
-          items-center
-          justify-center
+          max-w-6xl
         "
       >
         {children}

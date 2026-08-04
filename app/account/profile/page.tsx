@@ -50,7 +50,7 @@ export default function ProfilePage() {
 
             <div className="mt-6">
               <Link
-                href="#"
+                href="/account/edit-profile"
                 className="text-sm font-medium text-primary hover:underline"
               >
                 Edit Profile →

@@ -7,15 +7,17 @@ export function AccountCard({
 }: AccountCardProps) {
   return (
     <div
-      className="
-        rounded-2xl
-        border
-        border-border
-        bg-surface
-        p-6
-        shadow-sm
-      "
-    >
+  className="
+    w-full
+    rounded-2xl
+    border
+    border-border
+    bg-surface
+    p-6
+    shadow-sm
+    sm:p-8
+  "
+>
       {children}
     </div>
   );

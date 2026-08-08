@@ -7,6 +7,7 @@ import { useCart } from "@/context/CartContext";
 
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { WishlistButton } from "@/components/product/WishlistButton";
 
 import { formatCurrency } from "@/lib/utils/formatCurrency";
 
@@ -151,31 +152,45 @@ export function ProductInfo({
 
       <div
         className="
-          flex
-          flex-col
-          gap-4
-          sm:flex-row
-        "
+    flex
+    flex-col
+    gap-4
+  "
       >
         <Button
-          className="flex-1"
-          onClick={() => addToCart(product, quantity)}        >
+          className="w-full"
+          onClick={() =>
+            addToCart(product, quantity)
+          }
+        >
           Add to Cart
         </Button>
-        <Button
-          variant="whatsapp"
+
+        <div
           className="
-            flex-1
-            gap-2
-          "
+      flex
+      gap-4
+    "
         >
-          <MessageCircle
-            size={18}
-            strokeWidth={1.8}
+          <WishlistButton
+            product={product}
           />
 
-          Order via WhatsApp
-        </Button>
+          <Button
+            variant="whatsapp"
+            className="
+        flex-1
+        gap-2
+      "
+          >
+            <MessageCircle
+              size={18}
+              strokeWidth={1.8}
+            />
+            
+            Order via WhatsApp
+          </Button>
+        </div>
       </div>
     </div>
   );

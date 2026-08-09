@@ -18,10 +18,12 @@ function getStatusClasses(
 }
 type OrderCardProps = {
   order: Order;
+  href?: string;
 };
 
 export function OrderCard({
   order,
+  href,
 }: OrderCardProps) {
 
   const totalItems = order.items.reduce(
@@ -31,7 +33,7 @@ export function OrderCard({
 
   return (
     <Link
-  href={`/orders/${order.id}`}
+  href={href ?? `/orders/${order.id}`}
   className="block"
 >
   <section

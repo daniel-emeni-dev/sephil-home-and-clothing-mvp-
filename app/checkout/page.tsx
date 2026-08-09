@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { useCart } from "@/context/CartContext";
@@ -24,6 +24,9 @@ export default function CheckoutPage() {
     const [otp, setOtp] = useState<string[]>(
   Array(6).fill("")
 );
+
+const [isOrderComplete, setIsOrderComplete] =
+  useState(false);
 
 const [canResend, setCanResend] =
   useState(false); 
@@ -54,33 +57,56 @@ const [canResend, setCanResend] =
     };
   }, [isOtpOpen]);
 
-  const {
+ const {
   items,
   subtotal,
   clearCart,
+  isCartReady,
 } = useCart();
 
   const router = useRouter();
 
+  useEffect(() => {
+  if (!isCartReady) {
+    return;
+  }
+
+  if (
+    !isOtpOpen &&
+    !isOrderComplete &&
+    items.length === 0
+  ) {
+    router.replace("/cart");
+  }
+}, [
+  isCartReady,
+  items.length,
+  isOtpOpen,
+  isOrderComplete,
+  router,
+]);
+
   async function completeOrder() {
   const order = createOrder({
-  customer: formData,
-  items,
-  total: subtotal,
-});
+    customer: formData,
+    items,
+    total: subtotal,
+  });
 
-clearCart();
+  setIsOrderComplete(true);
 
-setIsOtpOpen(false);
+  clearCart();
 
-setOtp(Array(6).fill(""));
+  setIsOtpOpen(false);
 
-setCanResend(false);
+  setOtp(Array(6).fill(""));
 
-router.push(
-  `/order-confirmation?order=${order.id}`
-);
-  }
+  setCanResend(false);
+
+  router.push(
+    `/order-confirmation?order=${order.id}`
+  );
+}
 
   function handlePlaceOrder() {
     const validationErrors = validateCheckout(formData);
@@ -90,15 +116,7 @@ router.push(
     if (Object.keys(validationErrors).length > 0) {
       return;
     }
-
-    useEffect(() => {
-  if (items.length === 0) {
-    router.replace("/cart");
-  }
-}, [items, router]);
-
-    setIsOtpOpen(true);
-
+     setIsOtpOpen(true);
   }
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({

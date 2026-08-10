@@ -5,7 +5,7 @@
 | Layer | Tool | Purpose |
 |---|---|---|
 | Framework | Next.js 16 (App Router) | Full stack framework |
-| Auth + DB + Storage | Supabase | Entire backend — auth, PostgreSQL, RLS, file storage |
+| Auth + DB + Storage | Supabase | Entire backend — auth, PostgreSQL, RLS, file storage | 
 | Styling | Tailwind CSS v4 + shadcn/ui | UI components and styling |
 | Image CDN | Cloudinary | Product image storage, compression, responsive transforms |
 | Transactional Email | Resend | Customer email confirmation + owner order notification |

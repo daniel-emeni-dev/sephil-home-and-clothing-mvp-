@@ -1,9 +1,11 @@
-import { supabase } from "@/lib/supabase/client";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export default async function SupabaseTestPage() {
+  const supabase = await createServerSupabaseClient();
+
   const { error } = await supabase
     .from("products")
-    .select("*")
+    .select("id")
     .limit(1);
 
   return (
@@ -17,4 +19,4 @@ export default async function SupabaseTestPage() {
       </p>
     </main>
   );
-}
+}    

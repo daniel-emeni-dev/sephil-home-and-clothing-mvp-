@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <CategorySection />
+      <CategorySection /> 
       <FeaturedProducts />  
       <PromotionalBanner />
       <Testimonials />
